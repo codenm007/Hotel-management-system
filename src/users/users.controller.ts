@@ -3,10 +3,16 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { User } from './users.entity';
 import { UsersService } from './users.service';
+import {LoginUserDto} from './models/LoginUser.dto';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
+
+  @Post("login")
+  login(@Body() body: LoginUserDto) {
+    console.log(body);
+  }
 
   @Get()
   findAll(): Promise<User[]> {
