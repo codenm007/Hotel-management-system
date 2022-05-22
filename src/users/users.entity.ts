@@ -1,5 +1,5 @@
 
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn ,BeforeInsert } from 'typeorm';
 export type UserPrefixType = "MR" | "MRS" | "Ms" | "MISS" ;
 export type UserRoleType = "NU" | "HM" ;
 @Entity("users")
@@ -54,4 +54,9 @@ export class User {
 
   @Column({ default: true })
   isActive: boolean;
+
+   @BeforeInsert()
+   emailToLowerCase(){
+       this.email = this.email.toLowerCase();
+   }
 }
