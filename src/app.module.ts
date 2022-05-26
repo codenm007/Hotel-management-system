@@ -16,7 +16,7 @@ import { UsersModule } from './users/users.module';
       database: 'bajajHMS',
       autoLoadEntities: true
     }),
-    UsersModule
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
