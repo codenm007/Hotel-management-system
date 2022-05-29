@@ -7,7 +7,6 @@ import { User } from './users.entity';
 //importing services
 import { UsersService } from './users.service';
 import {AuthService} from '../auth/auth.service';
-import { JwtService } from '@nestjs/jwt';
 //importing serializers
 import {Serialize} from '../interceptor/serialize.interceptor';
 //importing dtos
@@ -24,7 +23,6 @@ export class UsersController {
     // @Inject(forwardRef(() => AuthService))
     private readonly usersService: UsersService,
     private readonly authService: AuthService,
-    private readonly jwtService: JwtService
     ) {}
 
   @Post("login")
@@ -48,14 +46,14 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Get('profile')
-  getProfile() {
-    this.jwtService.decode()
-    return {
+  // @UseGuards(JwtAuthGuard)
+  // @Get('profile')
+  // getProfile() {
+  //   this.jwtService.dec
+  //   return {
 
-    }
-  }
+  //   }
+  // }
 
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
