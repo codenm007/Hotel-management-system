@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable,BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User,UserPrefixType } from './users.entity';
@@ -25,6 +25,22 @@ export class UsersService {
   findByEmail(email: string): Promise<User> {
     return this.usersRepository.findOne(
       { where:{ email} });
+  }
+
+  async signup(email: string, password: string,firstName: string,lastName: string,prefix:UserPrefixType,profilePic:string,zip_code:number,cityId:number,stateId:number,dob:Date) {
+    // See if email is in use
+    const users = await this.findByEmail(email);
+
+    if (users) {
+      throw new BadRequestException('This email already in use !');
+    }
+    const passwordHash = password;
+
+    // Create a new user and save it
+    const user = await this.create(email,passwordHash, firstName, lastName,prefix, profilePic,zip_code,cityId,stateId,dob);
+
+    // return the user
+    return user;
   }
 
   async remove(id: string): Promise<void> {
