@@ -14,8 +14,8 @@ import { User } from '../users/users.entity';
     TypeOrmModule.forFeature([User]),
     forwardRef(() => UsersModule),
     JwtModule.register({
-      secret:"123456",
-      signOptions: { expiresIn: '3d' },
+      secret:'6276bb15-3c31-466e-bca2-eb8523d44037',
+      signOptions: { expiresIn: '2d' },
     }),
   ],
   providers: [AuthService, JwtStrategy,UsersService],

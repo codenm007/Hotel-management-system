@@ -27,6 +27,11 @@ export class UsersService {
       { where:{ email} });
   }
 
+  findById(id: number): Promise<User> {
+    return this.usersRepository.findOne(
+      { where:{ id} });
+  }
+
   async signup(email: string, password: string,firstName: string,lastName: string,prefix:UserPrefixType,profilePic:string,zip_code:number,cityId:number,stateId:number,dob:Date) {
     // See if email is in use
     const users = await this.findByEmail(email);

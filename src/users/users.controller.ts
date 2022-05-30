@@ -1,12 +1,13 @@
 
    
-import { Body, Controller, Delete, Get, Param, Post ,Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post ,Headers, UseGuards } from '@nestjs/common';
 
 import { User } from './users.entity';
 
 //importing services
 import { UsersService } from './users.service';
 import {AuthService} from '../auth/auth.service';
+import {JwtService} from '@nestjs/jwt';
 //importing serializers
 import {Serialize} from '../interceptor/serialize.interceptor';
 //importing dtos
@@ -20,9 +21,9 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 export class UsersController {
 
   constructor(
-    // @Inject(forwardRef(() => AuthService))
     private readonly usersService: UsersService,
     private readonly authService: AuthService,
+    private readonly jwtService:JwtService
     ) {}
 
   @Post("login")
@@ -46,14 +47,15 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  // @UseGuards(JwtAuthGuard)
-  // @Get('profile')
-  // getProfile() {
-  //   this.jwtService.dec
-  //   return {
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  async getProfile(@Headers() headers) {
+    const token = headers.authorization.slice(7);
+    const userId = this.jwtService.decode(token).sub;
 
-  //   }
-  // }
+    //console.log(await this.usersService.findById(userId));
+    return await this.usersService.findById(userId);
+  }
 
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
