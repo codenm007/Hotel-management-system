@@ -16,6 +16,9 @@ import {CreateUserDto} from './dtos/CreateUser.dto';
 import { UserDto } from './dtos/User.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
+import { Role } from "../users/dtos/User.dto";
+import {RoleGuard} from '../guards/role.guard';
+
 @Serialize(UserDto)
 @Controller('users')
 export class UsersController {
@@ -48,6 +51,7 @@ export class UsersController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @UseGuards(RoleGuard(Role.User))
   @Get('profile')
   async getProfile(@Headers() headers) {
     const token = headers.authorization.slice(7);

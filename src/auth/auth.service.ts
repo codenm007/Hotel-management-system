@@ -1,7 +1,7 @@
 import {
     Injectable,
     BadRequestException,
-    InternalServerErrorException,
+    UseGuards,
     ForbiddenException,
     Inject,
     forwardRef
@@ -32,7 +32,7 @@ import {
       if(!isPasswordMatch){
         throw new ForbiddenException('Incorrect email or password !');
       }else{
-        const payload = { username: user.email, sub: user.id };
+        const payload = { username: user.email, sub: user.id, role: user.roleCode};
         return {
           accessToken: this.jwtService.sign(payload),
         };

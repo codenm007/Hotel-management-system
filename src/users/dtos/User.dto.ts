@@ -1,5 +1,10 @@
 import { Expose } from 'class-transformer';
 
+export enum Role {
+  User = 'NU',
+  hotelManager = 'HM',
+}
+
 export class UserDto {
   @Expose()
   id: number;
@@ -9,4 +14,7 @@ export class UserDto {
 
   @Expose()
   accessToken:string;
+
+  @Expose()
+  role:string;
 }
