@@ -1,17 +1,18 @@
 import { Injectable,BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User,UserPrefixType } from './users.entity';
+import { User,UserPrefixType,UserRoleType } from '../users/users.entity';
 
 @Injectable()
-export class UsersService {
+export class HAService {
   constructor(
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
   ) {}
 
   create(email: string, passwordHash: string,firstName: string,lastName: string,prefix:UserPrefixType,profilePic:string,zip_code:number,cityId:number,stateId:number,dob:Date) {
-    const user = this.usersRepository.create({ email, passwordHash, firstName, lastName, prefix, profilePic, zip_code, cityId, stateId, dob });
+    const roleCode = 'HM';
+    const user = this.usersRepository.create({ email, passwordHash, firstName, lastName, prefix, profilePic, zip_code,roleCode, cityId, stateId, dob });
 
     return this.usersRepository.save(user);
   }
@@ -24,12 +25,12 @@ export class UsersService {
 
   findByEmail(email: string): Promise<User> {
     return this.usersRepository.findOne(
-      { where:{ email,roleCode:'NU'} });
+      { where:{ email,roleCode:'HM'} });
   }
 
   findById(id: number): Promise<User> {
     return this.usersRepository.findOne(
-      { where:{ id,roleCode:'NU'} });
+      { where:{ id,roleCode:'HM'} });
   }
 
   async signup(email: string, password: string,firstName: string,lastName: string,prefix:UserPrefixType,profilePic:string,zip_code:number,cityId:number,stateId:number,dob:Date) {
