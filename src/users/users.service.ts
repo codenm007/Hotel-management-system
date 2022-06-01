@@ -2,7 +2,7 @@ import { Injectable,BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User,UserPrefixType } from './users.entity';
-
+import { Role } from "./dtos/User.dto";
 @Injectable()
 export class UsersService {
   constructor(
@@ -11,7 +11,8 @@ export class UsersService {
   ) {}
 
   create(email: string, passwordHash: string,firstName: string,lastName: string,prefix:UserPrefixType,profilePic:string,zip_code:number,cityId:number,stateId:number,dob:Date) {
-    const user = this.usersRepository.create({ email, passwordHash, firstName, lastName, prefix, profilePic, zip_code, cityId, stateId, dob });
+    const roleCode = Role.User;
+    const user = this.usersRepository.create({ email, passwordHash, firstName, lastName, prefix, profilePic, zip_code,roleCode, cityId, stateId, dob });
 
     return this.usersRepository.save(user);
   }
@@ -24,12 +25,12 @@ export class UsersService {
 
   findByEmail(email: string): Promise<User> {
     return this.usersRepository.findOne(
-      { where:{ email,roleCode:'NU'} });
+      { where:{ email,roleCode:Role.User} });
   }
 
   findById(id: number): Promise<User> {
     return this.usersRepository.findOne(
-      { where:{ id,roleCode:'NU'} });
+      { where:{ id,roleCode:Role.User} });
   }
 
   async signup(email: string, password: string,firstName: string,lastName: string,prefix:UserPrefixType,profilePic:string,zip_code:number,cityId:number,stateId:number,dob:Date) {
@@ -48,7 +49,4 @@ export class UsersService {
     return user;
   }
 
-  async remove(id: string): Promise<void> {
-    await this.usersRepository.delete(id);
-  }
 }

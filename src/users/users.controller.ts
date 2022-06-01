@@ -33,7 +33,7 @@ export class UsersController {
   async login(@Body() body: LoginUserDto) {
     const {email, password} = body;
 
-    const user = await this.authService.validateCreds(email, password);
+    const user = await this.authService.validateCreds(email, password,Role.User);
     return user;
   }
 
@@ -61,8 +61,4 @@ export class UsersController {
     return await this.usersService.findById(userId);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string): Promise<void> {
-    return this.usersService.remove(id);
-  }
 }
