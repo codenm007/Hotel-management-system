@@ -5,7 +5,7 @@ import { User,UserPrefixType } from '../users/users.entity';
 import {Hotel} from './hotels.entity';
 import {HotelRooms,FacilitiesPrefixType} from './hotelRooms.entity';
 import { Role } from "../users/dtos/User.dto";
-
+import {HotelAssets} from './hotelAssets.entity';
 
 @Injectable()
 export class HAService {
@@ -16,6 +16,8 @@ export class HAService {
     private readonly hotelRepository: Repository<Hotel>,
     @InjectRepository(HotelRooms)
     private readonly hotelRoomRepository: Repository<HotelRooms>,
+    @InjectRepository(HotelAssets)
+    private readonly hotelAssets: Repository<HotelAssets>,
   ) {}
 
   create(email: string, passwordHash: string,firstName: string,lastName: string,prefix:UserPrefixType,profilePic:string,zip_code:number,cityId:number,stateId:number,dob:Date) {
@@ -50,12 +52,33 @@ export class HAService {
     if(!hotel){
       throw new BadRequestException('Invalid hotel id passed');
     }
+    //checking hotel ownwer 
     if(hotel.adminId !== adminId){
       throw new ForbiddenException('Method not allowed !')
+    }
+    if(this.findSimilarRoomType(hotel_id,room_type_id)){
+      throw new BadRequestException('Similar room choise cannot be added twice!')
     }
 
     const addHotelRooms = this.hotelRoomRepository.create({hotel_id,room_type_id,rooms_available,facilities,price});
     return this.hotelRoomRepository.save(addHotelRooms);
+  }
+
+  async addHotelAssets(adminId: number,hotel_id:number,url:string){
+    //checking if correct hotel id admin id is passed 
+    const hotel = await this.findHotelById(hotel_id);
+
+    if(!hotel){
+      throw new BadRequestException('Invalid hotel id passed');
+    }
+    //checking hotel ownwer 
+    if(hotel.adminId !== adminId){
+      throw new ForbiddenException('Method not allowed !')
+    }
+
+    const newAsset = this.hotelAssets.create({uploadedBy:adminId,url});
+    return this.hotelAssets.save(newAsset);
+
   }
 
 
@@ -78,6 +101,11 @@ export class HAService {
     return this.usersRepository.findOne(
       { where:{ id,roleCode: Role.hotelManager} });
   }
+
+  findSimilarRoomType(hotel_id:number,room_type_id:number): Promise<HotelRooms> {
+    return this.hotelRoomRepository.findOne(
+      { where:{hotel_id,room_type_id} });
+  }  
 
   findHotelById(id: number): Promise<Hotel> {
     return this.hotelRepository.findOne(

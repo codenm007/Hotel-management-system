@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../users/users.entity';
 import {Hotel} from './hotels.entity';
 import {HotelRooms} from './hotelRooms.entity';
+import {HotelAssets} from './hotelAssets.entity';
 import {HAController} from './hotelAdmin.controller';
 import {AuthModule} from '../auth/auth.module';
 import {JwtService} from '@nestjs/jwt';
@@ -11,7 +12,7 @@ import {HAService} from './hotelAdmin.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User,Hotel,HotelRooms]),
+    TypeOrmModule.forFeature([User,Hotel,HotelRooms,HotelAssets]),
     forwardRef(() => AuthModule)
   ],
   providers: [JwtService,HAService],

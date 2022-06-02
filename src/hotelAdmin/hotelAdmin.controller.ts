@@ -17,7 +17,7 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Role } from "../users/dtos/User.dto";
 import {addHotelDto} from './dtos/addHotel.dto';
 import {addRoomsDto} from './dtos/addRooms.dto';
-import {HotelDto} from './dtos/hotel.dto';
+import {addAsetsDto} from './dtos/addAsset.dto';
 import {RoleGuard} from '../guards/role.guard';
 
 
@@ -73,14 +73,14 @@ export class HAController {
 
   @UseGuards(JwtAuthGuard)
   @UseGuards(RoleGuard(Role.hotelManager))
-  @Post('addRooms')
-  async addHotelRooms(@Headers() headers,@Body() body: addRoomsDto){
+  @Post('addAsset')
+  async addAsset(@Headers() headers,@Body() body:addAsetsDto){
     const token = headers.authorization.slice(7);
     const adminId = this.jwtService.decode(token).sub;
 
-     const {hotel_id,room_type_id,rooms_available,facilities,price} = body;
+     const {url,hotel_id} = body;
 
-     return this.haService.addHotelRooms(adminId,hotel_id,room_type_id,rooms_available,facilities,price);
+     return this.haService.addHotelAssets(adminId,hotel_id,url);
 
   }
 }

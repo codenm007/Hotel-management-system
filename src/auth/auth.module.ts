@@ -18,11 +18,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../users/users.entity';
 import { Hotel } from '../hotelAdmin/hotels.entity';
 import { HotelRooms } from '../hotelAdmin/hotelRooms.entity';
+import { HotelAssets } from '../hotelAdmin/hotelAssets.entity';
 
 @Module({
   imports: [
     PassportModule,
-    TypeOrmModule.forFeature([User,Hotel,HotelRooms]),
+    TypeOrmModule.forFeature([User,Hotel,HotelRooms,HotelAssets]),
     forwardRef(() => UsersModule),
     forwardRef(() => HAModule),
     JwtModule.register({
