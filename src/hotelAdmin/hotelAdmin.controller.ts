@@ -16,6 +16,7 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 import { Role } from "../users/dtos/User.dto";
 import {addHotelDto} from './dtos/addHotel.dto';
+import {HotelDto} from './dtos/hotel.dto';
 import {RoleGuard} from '../guards/role.guard';
 
 
@@ -56,6 +57,7 @@ export class HAController {
     return await this.haService.findById(userId);
   }
 
+  @Serialize(HotelDto)
   @UseGuards(JwtAuthGuard)
   @UseGuards(RoleGuard(Role.hotelManager))
   @Post('listmyhotel')

@@ -29,9 +29,15 @@ export class HAService {
       throw new BadRequestException('Invalid admin id passed');
     }
     
-    const newHotel = this.hotelRepository.create({adminId,name,email,cityId,stateId,addrLine1,addrLine2,zip_code,brandPic,lat,long});
+    //checking if hotel with same email exist 
+    const hotel = this.findHotelByEmail(email);
+    if(hotel){
+      throw new BadRequestException('Hotel listing with same email already exist !');
+    }
 
+    const newHotel = this.hotelRepository.create({adminId,name,email,cityId,stateId,addrLine1,addrLine2,zip_code,brandPic,lat,long});
     return this.hotelRepository.save(newHotel);
+
   }
 
 
@@ -43,6 +49,11 @@ export class HAService {
   findByEmail(email: string): Promise<User> {
     return this.usersRepository.findOne(
       { where:{ email,roleCode: Role.hotelManager} });
+  }
+
+  findHotelByEmail(email: string): Promise<Hotel> {
+    return this.hotelRepository.findOne(
+      { where:{ email} });
   }
 
   findById(id: number): Promise<User> {
