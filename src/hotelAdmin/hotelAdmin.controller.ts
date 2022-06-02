@@ -16,6 +16,7 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 import { Role } from "../users/dtos/User.dto";
 import {addHotelDto} from './dtos/addHotel.dto';
+import {addRoomsDto} from './dtos/addRooms.dto';
 import {HotelDto} from './dtos/hotel.dto';
 import {RoleGuard} from '../guards/role.guard';
 
@@ -57,7 +58,6 @@ export class HAController {
     return await this.haService.findById(userId);
   }
 
-  @Serialize(HotelDto)
   @UseGuards(JwtAuthGuard)
   @UseGuards(RoleGuard(Role.hotelManager))
   @Post('listmyhotel')
@@ -68,6 +68,19 @@ export class HAController {
      const {name,email,cityId,stateId,addrLine1,addrLine2,zip_code,brandPic,lat,long} = body;
 
      return this.haService.listMyHotel(adminId,name,email,cityId,stateId,addrLine1,addrLine2,zip_code,brandPic,lat,long);
+
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @UseGuards(RoleGuard(Role.hotelManager))
+  @Post('addRooms')
+  async addHotelRooms(@Headers() headers,@Body() body: addRoomsDto){
+    const token = headers.authorization.slice(7);
+    const adminId = this.jwtService.decode(token).sub;
+
+     const {hotel_id,room_type_id,rooms_available,facilities,price} = body;
+
+     return this.haService.addHotelRooms(adminId,hotel_id,room_type_id,rooms_available,facilities,price);
 
   }
 }

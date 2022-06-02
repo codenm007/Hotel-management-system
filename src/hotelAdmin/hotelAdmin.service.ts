@@ -1,8 +1,9 @@
-import { Injectable,BadRequestException,Header } from '@nestjs/common';
+import { Injectable,BadRequestException,ForbiddenException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User,UserPrefixType } from '../users/users.entity';
 import {Hotel} from './hotels.entity';
+import {HotelRooms,FacilitiesPrefixType} from './hotelRooms.entity';
 import { Role } from "../users/dtos/User.dto";
 
 
@@ -13,6 +14,8 @@ export class HAService {
     private readonly usersRepository: Repository<User>,
     @InjectRepository(Hotel)
     private readonly hotelRepository: Repository<Hotel>,
+    @InjectRepository(HotelRooms)
+    private readonly hotelRoomRepository: Repository<HotelRooms>,
   ) {}
 
   create(email: string, passwordHash: string,firstName: string,lastName: string,prefix:UserPrefixType,profilePic:string,zip_code:number,cityId:number,stateId:number,dob:Date) {
@@ -40,6 +43,21 @@ export class HAService {
 
   }
 
+  async addHotelRooms(adminId: number,hotel_id:number,room_type_id:number,rooms_available:number,facilities:FacilitiesPrefixType,price:number){
+    //checking if correct hotel id admin id is passed 
+    const hotel = await this.findHotelById(hotel_id);
+
+    if(!hotel){
+      throw new BadRequestException('Invalid hotel id passed');
+    }
+    if(hotel.adminId !== adminId){
+      throw new ForbiddenException('Method not allowed !')
+    }
+
+    const addHotelRooms = this.hotelRoomRepository.create({hotel_id,room_type_id,rooms_available,facilities,price});
+    return this.hotelRoomRepository.save(addHotelRooms);
+  }
+
 
 
   async findAll(): Promise<any> {
@@ -59,6 +77,11 @@ export class HAService {
   findById(id: number): Promise<User> {
     return this.usersRepository.findOne(
       { where:{ id,roleCode: Role.hotelManager} });
+  }
+
+  findHotelById(id: number): Promise<Hotel> {
+    return this.hotelRepository.findOne(
+      { where:{ id} });
   }
 
   async signup(email: string, password: string,firstName: string,lastName: string,prefix:UserPrefixType,profilePic:string,zip_code:number,cityId:number,stateId:number,dob:Date) {
