@@ -16,12 +16,12 @@ import {HAModule} from '../hotelAdmin/hotelAdmin.module';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../users/users.entity';
-
+import { Hotel } from '../hotelAdmin/hotels.entity';
 
 @Module({
   imports: [
     PassportModule,
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([User,Hotel]),
     forwardRef(() => UsersModule),
     forwardRef(() => HAModule),
     JwtModule.register({

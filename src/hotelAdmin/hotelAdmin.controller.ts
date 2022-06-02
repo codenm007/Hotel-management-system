@@ -50,7 +50,7 @@ export class HAController {
     const token = headers.authorization.slice(7);
     const userId = this.jwtService.decode(token).sub;
 
-    //console.log(await this.usersService.findById(userId));
+    console.log(userId,1212);
     return await this.haService.findById(userId);
   }
 }
