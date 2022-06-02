@@ -60,6 +60,15 @@ export class HAController {
 
   @UseGuards(JwtAuthGuard)
   @UseGuards(RoleGuard(Role.hotelManager))
+  @Get()
+  async getAllHotelListings(@Headers() headers) {
+    const token = headers.authorization.slice(7);
+    const userId = this.jwtService.decode(token).sub;
+    return await this.haService.getHotelListings(userId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @UseGuards(RoleGuard(Role.hotelManager))
   @Post('listmyhotel')
   async listMyHotel(@Headers() headers,@Body() body: addHotelDto){
     const token = headers.authorization.slice(7);
@@ -70,17 +79,46 @@ export class HAController {
      return this.haService.listMyHotel(adminId,name,email,cityId,stateId,addrLine1,addrLine2,zip_code,brandPic,lat,long);
 
   }
+}
 
-  @UseGuards(JwtAuthGuard)
-  @UseGuards(RoleGuard(Role.hotelManager))
-  @Post('addAsset')
-  async addAsset(@Headers() headers,@Body() body:addAsetsDto){
-    const token = headers.authorization.slice(7);
-    const adminId = this.jwtService.decode(token).sub;
+@Controller('hoteladmin/rooms')
+export class HotelRoomsController{
+  constructor(
+    private readonly haService: HAService,
+    private readonly jwtService:JwtService
+    ) {}
 
-     const {url,hotel_id} = body;
+    @UseGuards(JwtAuthGuard)
+    @UseGuards(RoleGuard(Role.hotelManager))
+    @Post()
+    async addRooms(@Headers() headers,@Body() body:addRoomsDto){
+      const token = headers.authorization.slice(7);
+      const adminId = this.jwtService.decode(token).sub;
+  
+       const {hotel_id,room_type_id,rooms_available,facilities,price} = body;
+  
+       return this.haService.addHotelRooms(adminId,hotel_id,room_type_id,rooms_available,facilities,price);
+  
+    }
+}
 
-     return this.haService.addHotelAssets(adminId,hotel_id,url);
+@Controller('hoteladmin/hotelAssets')
+export class HotelAssetsController{
+  constructor(
+    private readonly haService: HAService,
+    private readonly jwtService:JwtService
+    ) {}
 
-  }
+    @UseGuards(JwtAuthGuard)
+    @UseGuards(RoleGuard(Role.hotelManager))
+    @Post()
+    async addAsset(@Headers() headers,@Body() body:addAsetsDto){
+      const token = headers.authorization.slice(7);
+      const adminId = this.jwtService.decode(token).sub;
+  
+       const {url,hotel_id} = body;
+  
+       return this.haService.addHotelAssets(adminId,hotel_id,url);
+  
+    }
 }
