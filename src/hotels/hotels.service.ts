@@ -103,6 +103,27 @@ export class HAService {
     }
   }
 
+  async getNearByHotels(adminId: number){
+    //checking if correct hotel id admin id is passed
+
+    const hotels = await this.findAllHotelsByAdminId(adminId);
+
+    const hotelArr =[];
+
+    if(hotels.length){
+      for (const hotel of hotels) {
+        hotel['rooms'] = await this.findAllRoomsByHotelId(hotel.id);
+        hotel['assets'] = await this.findAllAssetsByHotelId(hotel.id);
+        hotelArr.push(hotel);
+      }
+      if(hotelArr.length === hotels.length){
+        return hotelArr;
+      }
+    }else{
+      return hotelArr;
+    }
+  }
+
 
   async findAll(): Promise<any> {
     return this.usersRepository.find();

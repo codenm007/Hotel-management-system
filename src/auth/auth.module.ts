@@ -10,15 +10,15 @@ import {UsersModule } from '../users/users.module';
 import {UsersService} from '../users/users.service';
 
 //hotel admin module 
-import {HAService} from '../hotelAdmin/hotelAdmin.service';
-import {HAModule} from '../hotelAdmin/hotelAdmin.module';
+import {HAService} from '../hotels/hotels.service';
+import {HAModule} from '../hotels/hotels.module';
 
 
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../users/users.entity';
-import { Hotel } from '../hotelAdmin/hotels.entity';
-import { HotelRooms } from '../hotelAdmin/hotelRooms.entity';
-import { HotelAssets } from '../hotelAdmin/hotelAssets.entity';
+import { Hotel } from '../hotels/hotels.entity';
+import { HotelRooms } from '../hotels/hotelRooms.entity';
+import { HotelAssets } from '../hotels/hotelAssets.entity';
 
 @Module({
   imports: [

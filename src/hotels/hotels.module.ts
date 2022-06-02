@@ -7,7 +7,7 @@ import {HotelAssets} from './hotelAssets.entity';
 import {HAController,HotelAssetsController,HotelRoomsController} from './index.controller';
 import {AuthModule} from '../auth/auth.module';
 import {JwtService} from '@nestjs/jwt';
-import {HAService} from './hotelAdmin.service';
+import {HAService} from './hotels.service';
 
 
 @Module({

@@ -3,11 +3,24 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User,UserPrefixType } from './users.entity';
 import { Role } from "./dtos/User.dto";
+
+import {Hotel} from '../hotels/hotels.entity';
+import {HotelRooms,FacilitiesPrefixType} from '../hotels/hotelRooms.entity';
+import {HotelAssets} from '../hotels/hotelAssets.entity';
+
+
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
+    @InjectRepository(Hotel)
+    private readonly hotelRepository: Repository<Hotel>,
+    @InjectRepository(HotelRooms)
+    private readonly hotelRoomRepository: Repository<HotelRooms>,
+    @InjectRepository(HotelAssets)
+    private readonly hotelAssetRepository: Repository<HotelAssets>,
+    
   ) {}
 
   create(email: string, passwordHash: string,firstName: string,lastName: string,prefix:UserPrefixType,profilePic:string,zip_code:number,cityId:number,stateId:number,dob:Date) {
@@ -32,6 +45,8 @@ export class UsersService {
     return this.usersRepository.findOne(
       { where:{ id,roleCode:Role.User} });
   }
+
+
 
   async signup(email: string, password: string,firstName: string,lastName: string,prefix:UserPrefixType,profilePic:string,zip_code:number,cityId:number,stateId:number,dob:Date) {
     // See if email is in use

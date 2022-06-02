@@ -7,7 +7,7 @@ import {
     forwardRef
   } from '@nestjs/common';
   import { UsersService } from '../users/users.service';
-  import { HAService } from '../hotelAdmin/hotelAdmin.service';
+  import { HAService } from '../hotels/hotels.service';
   import {UserPrefixType} from '../users/users.entity';
   import * as bcrypt from 'bcrypt';
   import { JwtService } from '@nestjs/jwt';

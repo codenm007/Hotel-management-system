@@ -3,7 +3,7 @@
 import { Body, Controller, Delete, Get, Param, Post ,Headers, UseGuards } from '@nestjs/common';
 
 //importing services
-import { HAService } from './hotelAdmin.service';
+import { HAService } from './hotels.service';
 import {AuthService} from '../auth/auth.service';
 import {JwtService} from '@nestjs/jwt';
 //importing serializers

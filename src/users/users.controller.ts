@@ -3,8 +3,10 @@
 import { Body, Controller, Delete, Get, Param, Post ,Headers, UseGuards } from '@nestjs/common';
 
 import { User } from './users.entity';
+import {Hotel} from '../hotels/hotels.entity';
 
 //importing services
+import {HAService} from '../hotels/hotels.service';
 import { UsersService } from './users.service';
 import {AuthService} from '../auth/auth.service';
 import {JwtService} from '@nestjs/jwt';
@@ -61,4 +63,16 @@ export class UsersController {
     return await this.usersService.findById(userId);
   }
 
+}
+
+@Controller('users/hotel')
+export class FindHotelsController {
+  constructor(
+    private readonly usersService: UsersService,
+    ) {}
+
+    @Get()
+    findAll(): Promise<Hotel[]> {
+      return this.usersService.findAll();
+    }
 }
