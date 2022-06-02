@@ -112,7 +112,7 @@ export class HAService {
 
     if(hotels.length){
       for (const hotel of hotels) {
-        hotel['rooms'] = await this.findAllRoomsByHotelId(hotel.id);
+        hotel['Totalrooms'] = await this.findAllRoomsByHotelId(hotel.id);
         hotel['assets'] = await this.findAllAssetsByHotelId(hotel.id);
         hotelArr.push(hotel);
       }
