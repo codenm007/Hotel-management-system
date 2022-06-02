@@ -56,7 +56,8 @@ export class HAService {
     if(hotel.adminId !== adminId){
       throw new ForbiddenException('Method not allowed !')
     }
-    if(this.findSimilarRoomType(hotel_id,room_type_id)){
+
+    if(await this.findSimilarRoomType(hotel_id,room_type_id)){
       throw new BadRequestException('Similar room choise cannot be added twice!')
     }
 
@@ -76,11 +77,31 @@ export class HAService {
       throw new ForbiddenException('Method not allowed !')
     }
 
-    const newAsset = this.hotelAssets.create({uploadedBy:adminId,url});
+    const newAsset = this.hotelAssets.create({uploadedBy:adminId,hotelId:hotel_id,url});
     return this.hotelAssets.save(newAsset);
 
   }
 
+  async getHotelListings(adminId: number){
+    //checking if correct hotel id admin id is passed
+
+    const hotels = await this.findAllHotelsByAdminId(adminId);
+
+    const hotelArr =[];
+
+    if(hotels.length){
+      for (const hotel of hotels) {
+        hotel['rooms'] = await this.findAllRoomsByHotelId(hotel.id);
+        hotel['assets'] = await this.findAllAssetsByHotelId(hotel.id);
+        hotelArr.push(hotel);
+      }
+      if(hotelArr.length === hotels.length){
+        return hotelArr;
+      }
+    }else{
+      return hotelArr;
+    }
+  }
 
 
   async findAll(): Promise<any> {
@@ -90,6 +111,21 @@ export class HAService {
   findByEmail(email: string): Promise<User> {
     return this.usersRepository.findOne(
       { where:{ email,roleCode: Role.hotelManager} });
+  }
+
+  findAllHotelsByAdminId(adminId: number):Promise<Hotel[]> {
+    return this.hotelRepository.find(
+      { where:{adminId} });
+  }
+
+  findAllRoomsByHotelId(hotel_id: number):Promise<HotelRooms[]> {
+    return this.hotelRoomRepository.find(
+      { where:{hotel_id} });
+  }
+
+  findAllAssetsByHotelId(hotel_id: number):Promise<HotelAssets[]> {
+    return this.hotelAssets.find(
+      { where:{hotelId:hotel_id} });
   }
 
   findHotelByEmail(email: string): Promise<Hotel> {
@@ -103,6 +139,7 @@ export class HAService {
   }
 
   findSimilarRoomType(hotel_id:number,room_type_id:number): Promise<HotelRooms> {
+    
     return this.hotelRoomRepository.findOne(
       { where:{hotel_id,room_type_id} });
   }  

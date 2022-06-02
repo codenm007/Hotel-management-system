@@ -10,6 +10,9 @@ export class HotelAssets {
     @Column({ type: "integer" })
     uploadedBy: number;
 
+    @Column({ type: "integer" })
+    hotelId: number;
+
     @Column()
     url: string;
 
