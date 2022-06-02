@@ -19,9 +19,27 @@ import {addHotelDto} from './dtos/addHotel.dto';
 import {addRoomsDto} from './dtos/addRooms.dto';
 import {addAsetsDto} from './dtos/addAsset.dto';
 import {RoleGuard} from '../guards/role.guard';
+import {scrhotelbycity} from './dtos/searchHotelByCity.dto';
+
+@Controller('hotels')
+export class HotelsController {
+
+  constructor(
+    private readonly haService: HAService,
+    ) {}
+  
+    @Get()
+    async getHotelsBasedOnCity(@Body() body:scrhotelbycity ) {
+      const {cityId } = body;
+  
+      const user = await this.haService.getHotelsByCity(cityId);
+      return user;
+    }
+  
+}
 
 
-@Controller('hoteladmin')
+@Controller('hotel/admin')
 export class HAController {
 
   constructor(
@@ -81,7 +99,7 @@ export class HAController {
   }
 }
 
-@Controller('hoteladmin/rooms')
+@Controller('hotel/admin/rooms')
 export class HotelRoomsController{
   constructor(
     private readonly haService: HAService,
@@ -102,7 +120,7 @@ export class HotelRoomsController{
     }
 }
 
-@Controller('hoteladmin/hotelAssets')
+@Controller('hotel/admin/hotelAssets')
 export class HotelAssetsController{
   constructor(
     private readonly haService: HAService,

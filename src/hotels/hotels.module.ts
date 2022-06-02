@@ -4,7 +4,7 @@ import { User } from '../users/users.entity';
 import {Hotel} from './hotels.entity';
 import {HotelRooms} from './hotelRooms.entity';
 import {HotelAssets} from './hotelAssets.entity';
-import {HAController,HotelAssetsController,HotelRoomsController} from './index.controller';
+import {HAController,HotelAssetsController,HotelRoomsController,HotelsController,} from './index.controller';
 import {AuthModule} from '../auth/auth.module';
 import {JwtService} from '@nestjs/jwt';
 import {HAService} from './hotels.service';
@@ -16,6 +16,6 @@ import {HAService} from './hotels.service';
     forwardRef(() => AuthModule)
   ],
   providers: [JwtService,HAService],
-  controllers: [HAController,HotelAssetsController,HotelRoomsController],
+  controllers: [HotelsController,HAController,HotelAssetsController,HotelRoomsController],
 })
 export class HAModule {}

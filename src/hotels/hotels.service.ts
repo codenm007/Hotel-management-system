@@ -103,10 +103,10 @@ export class HAService {
     }
   }
 
-  async getNearByHotels(adminId: number){
+  async getHotelsByCity(cityId: number){
     //checking if correct hotel id admin id is passed
 
-    const hotels = await this.findAllHotelsByAdminId(adminId);
+    const hotels = await this.findAllHotelsByCityId(cityId);
 
     const hotelArr =[];
 
@@ -137,6 +137,12 @@ export class HAService {
   findAllHotelsByAdminId(adminId: number):Promise<Hotel[]> {
     return this.hotelRepository.find(
       { where:{adminId} });
+  }
+
+  findAllHotelsByCityId(cityId: number):Promise<Hotel[]> {
+    //only showing hotels which are approved and activated by admin 
+    return this.hotelRepository.find(
+      { where:{cityId,isActive:true,isApproved:true} });
   }
 
   findAllRoomsByHotelId(hotel_id: number):Promise<HotelRooms[]> {
