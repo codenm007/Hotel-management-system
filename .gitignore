@@ -36,3 +36,6 @@ lerna-debug.log*
 
 #prod files
 src/common/envs/production.env
+
+#env files
+.env
