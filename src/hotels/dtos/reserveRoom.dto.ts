@@ -24,8 +24,4 @@ export class reserveRoom  {
     @IsNumber()
     @Type(() => Number)
     no_of_rooms:number;
-
-    @IsNumber()
-    @Type(() => Number)
-    reserved_by:number;
 }
