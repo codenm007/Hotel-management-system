@@ -32,9 +32,9 @@ export class HotelsController {
   
     @Get()
     async getHotelsBasedOnCity(@Body() body:scrhotelbycity ) {
-      const {cityId } = body;
+      const {cityId,check_in,check_out } = body;
   
-      return this.haService.getHotelsByCity(cityId);
+      return this.haService.getHotelsByCity(cityId,check_in,check_out);
     }
 
     @Post('makeReservation')
