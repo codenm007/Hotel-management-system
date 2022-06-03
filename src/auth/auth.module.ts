@@ -19,11 +19,12 @@ import { User } from '../users/users.entity';
 import { Hotel } from '../hotels/hotels.entity';
 import { HotelRooms } from '../hotels/hotelRooms.entity';
 import { HotelAssets } from '../hotels/hotelAssets.entity';
+import {Hotelreservations} from '../hotels/reservations.entity';
 
 @Module({
   imports: [
     PassportModule,
-    TypeOrmModule.forFeature([User,Hotel,HotelRooms,HotelAssets]),
+    TypeOrmModule.forFeature([User,Hotel,HotelRooms,HotelAssets,Hotelreservations]),
     forwardRef(() => UsersModule),
     forwardRef(() => HAModule),
     JwtModule.register({

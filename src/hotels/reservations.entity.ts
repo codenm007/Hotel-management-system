@@ -16,6 +16,9 @@ export class Hotelreservations {
   no_of_guest: number;
 
   @Column()
+  room_id: number;
+
+  @Column()
   no_of_rooms: number;
 
   @Column()
