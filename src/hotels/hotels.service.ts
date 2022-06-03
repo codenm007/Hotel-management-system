@@ -117,7 +117,7 @@ export class HAService {
   }
 
   async getAllReservations(reserved_by: number) {
-    //checking if rooms are available for that date range 
+    // get all user reservations
     return await this.hotelReservations.find({ 
       where: {reserved_by}
     })
