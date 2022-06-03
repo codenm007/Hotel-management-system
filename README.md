@@ -9,12 +9,20 @@
 [Nm's Hotel Management System](https://github.com/codenm007/Hotel-management-system) .
 [Postman Documentation of Apis](https://documenter.getpostman.com/view/12866660/Uz5GnFqd#88533111-42c5-42fc-b89e-927c71dffc7c)
 
+
 This is a hotel Management System made out with the following technologies:
 - NestJS
 - MySQL
 - NodeJS
 - Typescript
 - TypeORM
+
+## Database schema 
+![](https://res.cloudinary.com/dqpurfmpd/image/upload/v1654242658/cdn/bajaj_hotel_management_system_assign_ebled0.png)
+
+*Please note there might be some future updates to the schema of the above project !*
+
+[Link to schema diagram](https://dbdiagram.io/d/62888daaf040f104c16c8f31)
 
 ## Installation
 
