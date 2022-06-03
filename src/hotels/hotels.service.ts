@@ -52,7 +52,6 @@ export class HAService {
   async reserveMyRoom(room_id: number, check_in: Date, check_out: Date, no_of_guest: number, no_of_rooms: number, reserved_by: number) {
     //checking if rooms are available for that date range 
     const freeRooms = await this.getEmptyRooms(room_id, check_in, check_out);
-    console.log(freeRooms);
     //if hotel is out of rooms then throwing error
     if (freeRooms < no_of_rooms) {
       throw new BadRequestException('We are sorry , we dont have enough rooms now , please come back later !')
