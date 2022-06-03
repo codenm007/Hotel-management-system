@@ -1,0 +1,4599 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "bajaj hms",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://bajajhms.herokuapp.com",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/hotels/reservations/book": {
+      "post": {
+        "tags": [
+          "reservations"
+        ],
+        "summary": "Reserve rooms",
+        "operationId": "Reserverooms",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "room_id",
+                  "check_in",
+                  "check_out",
+                  "no_of_guest",
+                  "no_of_rooms"
+                ],
+                "type": "object",
+                "properties": {
+                  "room_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 2
+                  },
+                  "check_in": {
+                    "type": "string",
+                    "example": "2022-06-03"
+                  },
+                  "check_out": {
+                    "type": "string",
+                    "example": "2022-06-06"
+                  },
+                  "no_of_guest": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 4
+                  },
+                  "no_of_rooms": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 42
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "71"
+                    },
+                    "example": "71"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"47-pVDMMuxYZBT6i3V8scFHJ8kSDg4\""
+                    },
+                    "example": "W/\"47-pVDMMuxYZBT6i3V8scFHJ8kSDg4\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Fri, 03 Jun 2022 03:08:19 GMT"
+                    },
+                    "example": "Fri, 03 Jun 2022 03:08:19 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/iftokennotpassedinheader1"
+                },
+                "example": {
+                  "statusCode": 400,
+                  "message": "Please pass token ",
+                  "error": "Bad Request"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "162"
+                    },
+                    "example": "162"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"a2-sm1S4QbRW6onRr6vwyJTPELvgbM\""
+                    },
+                    "example": "W/\"a2-sm1S4QbRW6onRr6vwyJTPELvgbM\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Fri, 03 Jun 2022 03:16:05 GMT"
+                    },
+                    "example": "Fri, 03 Jun 2022 03:16:05 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/successreservedrooms"
+                },
+                "example": {
+                  "check_in": "2022-06-03",
+                  "check_out": "2022-06-06",
+                  "no_of_guest": "2",
+                  "room_id": "2",
+                  "no_of_rooms": "4",
+                  "reserved_by": 11,
+                  "id": 1,
+                  "is_canceled": false,
+                  "checkedin": false
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hotels/reservations": {
+      "get": {
+        "tags": [
+          "reservations"
+        ],
+        "summary": "get all reservations",
+        "operationId": "getallreservations",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "525"
+                    },
+                    "example": "525"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"20d-P10VMA3A/vaejRJNkA2SXU3DxoU\""
+                    },
+                    "example": "W/\"20d-P10VMA3A/vaejRJNkA2SXU3DxoU\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Fri, 03 Jun 2022 07:01:57 GMT"
+                    },
+                    "example": "Fri, 03 Jun 2022 07:01:57 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/success"
+                  },
+                  "description": "",
+                  "example": [
+                    {
+                      "id": 1,
+                      "check_in": "2022-06-02T18:30:00.000Z",
+                      "check_out": "2022-06-05T18:30:00.000Z",
+                      "no_of_guest": 2,
+                      "room_id": 2,
+                      "no_of_rooms": 4,
+                      "reserved_by": 11,
+                      "createdAt": "2022-06-02T21:46:05.000Z",
+                      "updatedAt": "2022-06-02T21:46:05.000Z",
+                      "is_canceled": true,
+                      "checkedin": false
+                    },
+                    {
+                      "id": 2,
+                      "check_in": "2022-06-02T18:30:00.000Z",
+                      "check_out": "2022-06-05T18:30:00.000Z",
+                      "no_of_guest": 3,
+                      "room_id": 2,
+                      "no_of_rooms": 4,
+                      "reserved_by": 11,
+                      "createdAt": "2022-06-02T21:46:59.000Z",
+                      "updatedAt": "2022-06-02T21:46:59.000Z",
+                      "is_canceled": false,
+                      "checkedin": true
+                    }
+                  ]
+                },
+                "example": [
+                  {
+                    "id": 1,
+                    "check_in": "2022-06-02T18:30:00.000Z",
+                    "check_out": "2022-06-05T18:30:00.000Z",
+                    "no_of_guest": 2,
+                    "room_id": 2,
+                    "no_of_rooms": 4,
+                    "reserved_by": 11,
+                    "createdAt": "2022-06-02T21:46:05.000Z",
+                    "updatedAt": "2022-06-02T21:46:05.000Z",
+                    "is_canceled": true,
+                    "checkedin": false
+                  },
+                  {
+                    "id": 2,
+                    "check_in": "2022-06-02T18:30:00.000Z",
+                    "check_out": "2022-06-05T18:30:00.000Z",
+                    "no_of_guest": 3,
+                    "room_id": 2,
+                    "no_of_rooms": 4,
+                    "reserved_by": 11,
+                    "createdAt": "2022-06-02T21:46:59.000Z",
+                    "updatedAt": "2022-06-02T21:46:59.000Z",
+                    "is_canceled": false,
+                    "checkedin": true
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hotels/reservations/cancel": {
+      "post": {
+        "tags": [
+          "reservations"
+        ],
+        "summary": "cancel reservations",
+        "operationId": "cancelreservations",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "id"
+                ],
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "261"
+                    },
+                    "example": "261"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"105-KbK4mCTcHGI597gHma92Rm8zu5w\""
+                    },
+                    "example": "W/\"105-KbK4mCTcHGI597gHma92Rm8zu5w\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Fri, 03 Jun 2022 06:47:29 GMT"
+                    },
+                    "example": "Fri, 03 Jun 2022 06:47:29 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/success"
+                },
+                "example": {
+                  "id": 1,
+                  "check_in": "2022-06-02T18:30:00.000Z",
+                  "check_out": "2022-06-05T18:30:00.000Z",
+                  "no_of_guest": 2,
+                  "room_id": 2,
+                  "no_of_rooms": 4,
+                  "reserved_by": 11,
+                  "createdAt": "2022-06-02T21:46:05.000Z",
+                  "updatedAt": "2022-06-02T21:46:05.000Z",
+                  "is_canceled": true,
+                  "checkedin": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "76"
+                    },
+                    "example": "76"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"4c-r0gvxl7IkY2/ZaRLHv2KZ9remlM\""
+                    },
+                    "example": "W/\"4c-r0gvxl7IkY2/ZaRLHv2KZ9remlM\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Fri, 03 Jun 2022 06:49:16 GMT"
+                    },
+                    "example": "Fri, 03 Jun 2022 06:49:16 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/roomalreadycanceled1"
+                },
+                "example": {
+                  "statusCode": 400,
+                  "message": "Room already canceled !",
+                  "error": "Bad Request"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hotels/reservations/checkIn": {
+      "post": {
+        "tags": [
+          "reservations"
+        ],
+        "summary": "cehcked in to room",
+        "operationId": "cehckedintoroom",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "id"
+                ],
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 2
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "77"
+                    },
+                    "example": "77"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"4d-Cdqbsnu8kCzWlsObwUCZXPbiqAU\""
+                    },
+                    "example": "W/\"4d-Cdqbsnu8kCzWlsObwUCZXPbiqAU\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Fri, 03 Jun 2022 06:53:40 GMT"
+                    },
+                    "example": "Fri, 03 Jun 2022 06:53:40 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomalreadycheckedInerror1"
+                },
+                "example": {
+                  "statusCode": 400,
+                  "message": "Room already checkedIn !",
+                  "error": "Bad Request"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "261"
+                    },
+                    "example": "261"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"105-Dlol8ShEelf9CkVUTYHnDQB084Q\""
+                    },
+                    "example": "W/\"105-Dlol8ShEelf9CkVUTYHnDQB084Q\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Fri, 03 Jun 2022 06:54:56 GMT"
+                    },
+                    "example": "Fri, 03 Jun 2022 06:54:56 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/success"
+                },
+                "example": {
+                  "id": 2,
+                  "check_in": "2022-06-02T18:30:00.000Z",
+                  "check_out": "2022-06-05T18:30:00.000Z",
+                  "no_of_guest": 3,
+                  "room_id": 2,
+                  "no_of_rooms": 4,
+                  "reserved_by": 11,
+                  "createdAt": "2022-06-02T21:46:59.000Z",
+                  "updatedAt": "2022-06-02T21:46:59.000Z",
+                  "is_canceled": false,
+                  "checkedin": true
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/users/profile": {
+      "get": {
+        "tags": [
+          "user protected"
+        ],
+        "summary": "get user profile info",
+        "operationId": "getuserprofileinfo",
+        "parameters": [],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "43"
+                    },
+                    "example": "43"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+                    },
+                    "example": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Sun, 29 May 2022 17:17:36 GMT"
+                    },
+                    "example": "Sun, 29 May 2022 17:17:36 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/invalidtoken1"
+                },
+                "example": {
+                  "statusCode": 401,
+                  "message": "Unauthorized"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "42"
+                    },
+                    "example": "42"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"2a-NmXLTolhqFhMvD5rvIRGcXNv0rs\""
+                    },
+                    "example": "W/\"2a-NmXLTolhqFhMvD5rvIRGcXNv0rs\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Sun, 29 May 2022 17:17:57 GMT"
+                    },
+                    "example": "Sun, 29 May 2022 17:17:57 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/validtoken"
+                },
+                "example": {
+                  "id": 11,
+                  "email": "n.majumder14@gmail.com"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "login user",
+        "operationId": "loginuser",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "saasassa@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "password"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "80"
+                    },
+                    "example": "80"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"50-MoQr1eQTkqI0LIG9y0wHYo/ngbw\""
+                    },
+                    "example": "W/\"50-MoQr1eQTkqI0LIG9y0wHYo/ngbw\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Fri, 27 May 2022 11:10:24 GMT"
+                    },
+                    "example": "Fri, 27 May 2022 11:10:24 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/incorrectpassword1"
+                },
+                "example": {
+                  "statusCode": 403,
+                  "message": "Incorrect email or password !",
+                  "error": "Forbidden"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "206"
+                    },
+                    "example": "206"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"ce-7yAI4THrJe33CjxUjawI2N2ct2Y\""
+                    },
+                    "example": "W/\"ce-7yAI4THrJe33CjxUjawI2N2ct2Y\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Sun, 29 May 2022 16:22:22 GMT"
+                    },
+                    "example": "Sun, 29 May 2022 16:22:22 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/correctlogin"
+                },
+                "example": {
+                  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im4ubWFqdW1kZXIxNEBnbWFpbC5jb20iLCJzdWIiOjExLCJpYXQiOjE2NTM4NDEzNDIsImV4cCI6MTY1Mzg0MTQwMn0.WwH9SGEewrjGPB5t_boGV897tyqmibokWddAuvxktY4"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/users/signup": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Signup Users",
+        "operationId": "SignupUsers",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "email",
+                  "password",
+                  "firstName",
+                  "lastName",
+                  "prefix",
+                  "profilePic",
+                  "zip_code",
+                  "dob",
+                  "stateId",
+                  "cityId"
+                ],
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "n.majumder134@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "password"
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "example": "Nilanjan"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "example": "Majumdar"
+                  },
+                  "prefix": {
+                    "type": "string",
+                    "example": "MR"
+                  },
+                  "profilePic": {
+                    "type": "string",
+                    "example": "https://picsum.photos/200/300"
+                  },
+                  "zip_code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 700079
+                  },
+                  "dob": {
+                    "type": "string",
+                    "example": "2001-05-18"
+                  },
+                  "stateId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "cityId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "150"
+                    },
+                    "example": "150"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"96-+VlYk8OhcSbkKm05oIdeTB63DBA\""
+                    },
+                    "example": "W/\"96-+VlYk8OhcSbkKm05oIdeTB63DBA\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Thu, 26 May 2022 15:42:06 GMT"
+                    },
+                    "example": "Thu, 26 May 2022 15:42:06 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorhandlingdto1"
+                },
+                "example": {
+                  "statusCode": 400,
+                  "message": [
+                    "dob must be a Date instance",
+                    "zip_code must be a number conforming to the specified constraints"
+                  ],
+                  "error": "Bad Request"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "42"
+                    },
+                    "example": "42"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"2a-NmXLTolhqFhMvD5rvIRGcXNv0rs\""
+                    },
+                    "example": "W/\"2a-NmXLTolhqFhMvD5rvIRGcXNv0rs\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Thu, 26 May 2022 16:37:45 GMT"
+                    },
+                    "example": "Thu, 26 May 2022 16:37:45 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/successfulresponse"
+                },
+                "example": {
+                  "id": 11,
+                  "email": "n.majumder14@gmail.com"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hotel/admin/profile": {
+      "get": {
+        "tags": [
+          "HA protected"
+        ],
+        "summary": "get user profile info",
+        "operationId": "Getgetuserprofileinfo",
+        "parameters": [],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "43"
+                    },
+                    "example": "43"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+                    },
+                    "example": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Sun, 29 May 2022 17:17:36 GMT"
+                    },
+                    "example": "Sun, 29 May 2022 17:17:36 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/invalidtoken1"
+                },
+                "example": {
+                  "statusCode": 401,
+                  "message": "Unauthorized"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "42"
+                    },
+                    "example": "42"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"2a-NmXLTolhqFhMvD5rvIRGcXNv0rs\""
+                    },
+                    "example": "W/\"2a-NmXLTolhqFhMvD5rvIRGcXNv0rs\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Sun, 29 May 2022 17:17:57 GMT"
+                    },
+                    "example": "Sun, 29 May 2022 17:17:57 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/validtoken"
+                },
+                "example": {
+                  "id": 11,
+                  "email": "n.majumder14@gmail.com"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hotel/admin": {
+      "get": {
+        "tags": [
+          "HA protected"
+        ],
+        "summary": "get all hotel listings",
+        "operationId": "getallhotellistings",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "1526"
+                    },
+                    "example": "1526"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"5f6-7nBoW1Bwn1mimCewr5NgJH5rL40\""
+                    },
+                    "example": "W/\"5f6-7nBoW1Bwn1mimCewr5NgJH5rL40\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Thu, 02 Jun 2022 12:18:09 GMT"
+                    },
+                    "example": "Thu, 02 Jun 2022 12:18:09 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/success3"
+                  },
+                  "description": "",
+                  "example": [
+                    {
+                      "id": 2,
+                      "adminId": 18,
+                      "name": "Annapurna",
+                      "brandPic": "",
+                      "email": "annapurna@gmail.com",
+                      "createdAt": "2022-06-02T01:25:18.000Z",
+                      "updatedAt": "2022-06-02T01:25:18.000Z",
+                      "addrLine1": "Ha street",
+                      "addrLine2": "near gopal enclave",
+                      "lat": "60.008",
+                      "long": "-179.00",
+                      "cityId": 1,
+                      "stateId": 1,
+                      "zip_code": 600079,
+                      "isActive": false,
+                      "isApproved": false,
+                      "rooms": [
+                        {
+                          "id": 1,
+                          "hotel_id": 2,
+                          "room_type_id": 1,
+                          "rooms_available": 10,
+                          "facilities": "ACKO",
+                          "createdAt": "2022-06-02T02:48:54.000Z",
+                          "updatedAt": "2022-06-02T02:48:54.000Z",
+                          "price": "987"
+                        }
+                      ],
+                      "assets": [
+                        {
+                          "id": 11,
+                          "uploadedBy": 18,
+                          "hotelId": 2,
+                          "url": "https://anna12e3.com/go43odho4te3l.jpg",
+                          "createdAt": "2022-06-02T05:56:46.000Z"
+                        },
+                        {
+                          "id": 12,
+                          "uploadedBy": 18,
+                          "hotelId": 2,
+                          "url": "https://anhbhbna12e3.com/go43odho4te3l.jpg",
+                          "createdAt": "2022-06-02T05:57:03.000Z"
+                        },
+                        {
+                          "id": 13,
+                          "uploadedBy": 18,
+                          "hotelId": 2,
+                          "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                          "createdAt": "2022-06-02T06:44:36.000Z"
+                        },
+                        {
+                          "id": 14,
+                          "uploadedBy": 18,
+                          "hotelId": 2,
+                          "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                          "createdAt": "2022-06-02T06:44:39.000Z"
+                        },
+                        {
+                          "id": 15,
+                          "uploadedBy": 18,
+                          "hotelId": 2,
+                          "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                          "createdAt": "2022-06-02T06:44:41.000Z"
+                        }
+                      ]
+                    },
+                    {
+                      "id": 7,
+                      "adminId": 18,
+                      "name": "Annapurna2 grand",
+                      "brandPic": "",
+                      "email": "annapurnagrand@gmail.com",
+                      "createdAt": "2022-06-02T01:29:17.000Z",
+                      "updatedAt": "2022-06-02T01:29:17.000Z",
+                      "addrLine1": "Ha street",
+                      "addrLine2": "near gopal enclave",
+                      "lat": "60.008",
+                      "long": "-179.00",
+                      "cityId": 1,
+                      "stateId": 1,
+                      "zip_code": 600079,
+                      "isActive": false,
+                      "isApproved": false,
+                      "rooms": [],
+                      "assets": []
+                    }
+                  ]
+                },
+                "example": [
+                  {
+                    "id": 2,
+                    "adminId": 18,
+                    "name": "Annapurna",
+                    "brandPic": "",
+                    "email": "annapurna@gmail.com",
+                    "createdAt": "2022-06-02T01:25:18.000Z",
+                    "updatedAt": "2022-06-02T01:25:18.000Z",
+                    "addrLine1": "Ha street",
+                    "addrLine2": "near gopal enclave",
+                    "lat": "60.008",
+                    "long": "-179.00",
+                    "cityId": 1,
+                    "stateId": 1,
+                    "zip_code": 600079,
+                    "isActive": false,
+                    "isApproved": false,
+                    "rooms": [
+                      {
+                        "id": 1,
+                        "hotel_id": 2,
+                        "room_type_id": 1,
+                        "rooms_available": 10,
+                        "facilities": "ACKO",
+                        "createdAt": "2022-06-02T02:48:54.000Z",
+                        "updatedAt": "2022-06-02T02:48:54.000Z",
+                        "price": "987"
+                      }
+                    ],
+                    "assets": [
+                      {
+                        "id": 11,
+                        "uploadedBy": 18,
+                        "hotelId": 2,
+                        "url": "https://anna12e3.com/go43odho4te3l.jpg",
+                        "createdAt": "2022-06-02T05:56:46.000Z"
+                      },
+                      {
+                        "id": 12,
+                        "uploadedBy": 18,
+                        "hotelId": 2,
+                        "url": "https://anhbhbna12e3.com/go43odho4te3l.jpg",
+                        "createdAt": "2022-06-02T05:57:03.000Z"
+                      },
+                      {
+                        "id": 13,
+                        "uploadedBy": 18,
+                        "hotelId": 2,
+                        "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                        "createdAt": "2022-06-02T06:44:36.000Z"
+                      },
+                      {
+                        "id": 14,
+                        "uploadedBy": 18,
+                        "hotelId": 2,
+                        "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                        "createdAt": "2022-06-02T06:44:39.000Z"
+                      },
+                      {
+                        "id": 15,
+                        "uploadedBy": 18,
+                        "hotelId": 2,
+                        "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                        "createdAt": "2022-06-02T06:44:41.000Z"
+                      }
+                    ]
+                  },
+                  {
+                    "id": 7,
+                    "adminId": 18,
+                    "name": "Annapurna2 grand",
+                    "brandPic": "",
+                    "email": "annapurnagrand@gmail.com",
+                    "createdAt": "2022-06-02T01:29:17.000Z",
+                    "updatedAt": "2022-06-02T01:29:17.000Z",
+                    "addrLine1": "Ha street",
+                    "addrLine2": "near gopal enclave",
+                    "lat": "60.008",
+                    "long": "-179.00",
+                    "cityId": 1,
+                    "stateId": 1,
+                    "zip_code": 600079,
+                    "isActive": false,
+                    "isApproved": false,
+                    "rooms": [],
+                    "assets": []
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hotel/admin/listmyhotel": {
+      "post": {
+        "tags": [
+          "HA protected"
+        ],
+        "summary": "List my hotel",
+        "operationId": "Listmyhotel",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "name",
+                  "email",
+                  "cityId",
+                  "stateId",
+                  "addrLine1",
+                  "addrLine2",
+                  "zip_code",
+                  "brandPic",
+                  "lat",
+                  "long"
+                ],
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Annapurna2 grand"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "annapurnagrand@gmail.com"
+                  },
+                  "cityId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "stateId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "addrLine1": {
+                    "type": "string",
+                    "example": "Ha street"
+                  },
+                  "addrLine2": {
+                    "type": "string",
+                    "example": "near gopal enclave"
+                  },
+                  "zip_code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 600079
+                  },
+                  "brandPic": {
+                    "type": "string"
+                  },
+                  "lat": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 60.008
+                  },
+                  "long": {
+                    "type": "number",
+                    "format": "double",
+                    "example": -179.0
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "200"
+                    },
+                    "example": "200"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"c8-MizhfaiuOmMKR5sTw1GxqTfXH98\""
+                    },
+                    "example": "W/\"c8-MizhfaiuOmMKR5sTw1GxqTfXH98\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Thu, 02 Jun 2022 06:55:18 GMT"
+                    },
+                    "example": "Thu, 02 Jun 2022 06:55:18 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/successresponse"
+                },
+                "example": {
+                  "name": "Annapurna",
+                  "email": "annapurna@gmail.com",
+                  "cityId": "1",
+                  "stateId": "1",
+                  "addrLine1": "Ha street",
+                  "addrLine2": "near gopal enclave",
+                  "zip_code": "600079",
+                  "brandPic": "",
+                  "lat": "60.008",
+                  "long": "-179.00"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "98"
+                    },
+                    "example": "98"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"62-chcA3lCpVBT1DzGP6voMbRDB1WQ\""
+                    },
+                    "example": "W/\"62-chcA3lCpVBT1DzGP6voMbRDB1WQ\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Thu, 02 Jun 2022 07:01:52 GMT"
+                    },
+                    "example": "Thu, 02 Jun 2022 07:01:52 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/samehotelemail1"
+                },
+                "example": {
+                  "statusCode": 400,
+                  "message": "Hotel listing with same email already exist !",
+                  "error": "Bad Request"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hotel/admin/rooms": {
+      "post": {
+        "tags": [
+          "HA protected"
+        ],
+        "summary": "Add Hotel Rooms",
+        "operationId": "AddHotelRooms",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "hotel_id",
+                  "room_type_id",
+                  "rooms_available",
+                  "facilities",
+                  "price"
+                ],
+                "type": "object",
+                "properties": {
+                  "hotel_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 2
+                  },
+                  "room_type_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 2
+                  },
+                  "rooms_available": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 16
+                  },
+                  "facilities": {
+                    "type": "string",
+                    "example": "ACKO"
+                  },
+                  "price": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 987.12
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "102"
+                    },
+                    "example": "102"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"66-4594fNwvgTIOvhSTDuKAdFaGvsI\""
+                    },
+                    "example": "W/\"66-4594fNwvgTIOvhSTDuKAdFaGvsI\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Thu, 02 Jun 2022 08:18:54 GMT"
+                    },
+                    "example": "Thu, 02 Jun 2022 08:18:54 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/sucess"
+                },
+                "example": {
+                  "hotel_id": "2",
+                  "room_type_id": "1",
+                  "rooms_available": "10",
+                  "facilities": "ACKO",
+                  "price": "987.12",
+                  "id": 1
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "95"
+                    },
+                    "example": "95"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"5f-oa602WC5Ye26slfO8iEAin3kThU\""
+                    },
+                    "example": "W/\"5f-oa602WC5Ye26slfO8iEAin3kThU\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Thu, 02 Jun 2022 10:17:51 GMT"
+                    },
+                    "example": "Thu, 02 Jun 2022 10:17:51 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/similarroomchoicecannotbeaddedtwice1"
+                },
+                "example": {
+                  "statusCode": 400,
+                  "message": "Similar room choise cannot be added twice!",
+                  "error": "Bad Request"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hotel/admin/rooms/reservations/1": {
+      "get": {
+        "tags": [
+          "HA protected"
+        ],
+        "summary": "get room reservations",
+        "operationId": "getroomreservations",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "",
+            "headers": {},
+            "content": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hotel/admin/hotelAssets": {
+      "post": {
+        "tags": [
+          "HA protected"
+        ],
+        "summary": "Add Hotel assets",
+        "operationId": "AddHotelassets",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "hotel_id",
+                  "url"
+                ],
+                "type": "object",
+                "properties": {
+                  "hotel_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 2
+                  },
+                  "url": {
+                    "type": "string",
+                    "example": "https://anhbuhbna12e3.com/go43odho4te3l.jpg"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "81"
+                    },
+                    "example": "81"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"51-ezYdtz4oc1LCW0ckD+gnz+mFLWc\""
+                    },
+                    "example": "W/\"51-ezYdtz4oc1LCW0ckD+gnz+mFLWc\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Thu, 02 Jun 2022 10:39:17 GMT"
+                    },
+                    "example": "Thu, 02 Jun 2022 10:39:17 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/typeerror1"
+                },
+                "example": {
+                  "statusCode": 400,
+                  "message": [
+                    "url must be an URL address"
+                  ],
+                  "error": "Bad Request"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "66"
+                    },
+                    "example": "66"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"42-DoTxBQt/0IpX9AwUDsjbkQaGKWM\""
+                    },
+                    "example": "W/\"42-DoTxBQt/0IpX9AwUDsjbkQaGKWM\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Thu, 02 Jun 2022 10:39:50 GMT"
+                    },
+                    "example": "Thu, 02 Jun 2022 10:39:50 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/success4"
+                },
+                "example": {
+                  "uploadedBy": 18,
+                  "url": "https://anna123.com/goodhotel.jpg",
+                  "id": 1
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hotel/admin/login": {
+      "post": {
+        "tags": [
+          "Hotel Admin"
+        ],
+        "summary": "login manager",
+        "operationId": "loginmanager",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "n.majumder1343@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "password"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "80"
+                    },
+                    "example": "80"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"50-MoQr1eQTkqI0LIG9y0wHYo/ngbw\""
+                    },
+                    "example": "W/\"50-MoQr1eQTkqI0LIG9y0wHYo/ngbw\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Fri, 27 May 2022 11:10:24 GMT"
+                    },
+                    "example": "Fri, 27 May 2022 11:10:24 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/incorrectpassword1"
+                },
+                "example": {
+                  "statusCode": 403,
+                  "message": "Incorrect email or password !",
+                  "error": "Forbidden"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "206"
+                    },
+                    "example": "206"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"ce-7yAI4THrJe33CjxUjawI2N2ct2Y\""
+                    },
+                    "example": "W/\"ce-7yAI4THrJe33CjxUjawI2N2ct2Y\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Sun, 29 May 2022 16:22:22 GMT"
+                    },
+                    "example": "Sun, 29 May 2022 16:22:22 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/correctlogin"
+                },
+                "example": {
+                  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im4ubWFqdW1kZXIxNEBnbWFpbC5jb20iLCJzdWIiOjExLCJpYXQiOjE2NTM4NDEzNDIsImV4cCI6MTY1Mzg0MTQwMn0.WwH9SGEewrjGPB5t_boGV897tyqmibokWddAuvxktY4"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hotel/admin/signup": {
+      "post": {
+        "tags": [
+          "Hotel Admin"
+        ],
+        "summary": "Signup Manager",
+        "operationId": "SignupManager",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "email",
+                  "password",
+                  "firstName",
+                  "lastName",
+                  "prefix",
+                  "profilePic",
+                  "zip_code",
+                  "dob",
+                  "stateId",
+                  "cityId"
+                ],
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "n.majumder1343@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "password"
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "example": "Nilanjan"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "example": "Majumdar"
+                  },
+                  "prefix": {
+                    "type": "string",
+                    "example": "MR"
+                  },
+                  "profilePic": {
+                    "type": "string",
+                    "example": "https://picsum.photos/200/300"
+                  },
+                  "zip_code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 700079
+                  },
+                  "dob": {
+                    "type": "string",
+                    "example": "2001-05-18"
+                  },
+                  "stateId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "cityId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "150"
+                    },
+                    "example": "150"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"96-+VlYk8OhcSbkKm05oIdeTB63DBA\""
+                    },
+                    "example": "W/\"96-+VlYk8OhcSbkKm05oIdeTB63DBA\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Thu, 26 May 2022 15:42:06 GMT"
+                    },
+                    "example": "Thu, 26 May 2022 15:42:06 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorhandlingdto1"
+                },
+                "example": {
+                  "statusCode": 400,
+                  "message": [
+                    "dob must be a Date instance",
+                    "zip_code must be a number conforming to the specified constraints"
+                  ],
+                  "error": "Bad Request"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "42"
+                    },
+                    "example": "42"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"2a-NmXLTolhqFhMvD5rvIRGcXNv0rs\""
+                    },
+                    "example": "W/\"2a-NmXLTolhqFhMvD5rvIRGcXNv0rs\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Thu, 26 May 2022 16:37:45 GMT"
+                    },
+                    "example": "Thu, 26 May 2022 16:37:45 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/successfulresponse"
+                },
+                "example": {
+                  "id": 11,
+                  "email": "n.majumder14@gmail.com"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "ping",
+        "operationId": "ping",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "12"
+                    },
+                    "example": "12"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"c-Lve95gjOVATpfV8EL5X4nxwjKHE\""
+                    },
+                    "example": "W/\"c-Lve95gjOVATpfV8EL5X4nxwjKHE\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Sat, 21 May 2022 20:06:32 GMT"
+                    },
+                    "example": "Sat, 21 May 2022 20:06:32 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "text/html; charset=utf-8": {
+                "schema": {
+                  "type": "string",
+                  "example": "Hello World!"
+                },
+                "example": "Hello World!"
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hotels": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "get hotels based on city",
+        "operationId": "gethotelsbasedoncity",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "1644"
+                    },
+                    "example": "1644"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"66c-QI8qtv5wGdplrPDLttGmvx4YhyA\""
+                    },
+                    "example": "W/\"66c-QI8qtv5wGdplrPDLttGmvx4YhyA\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Fri, 03 Jun 2022 07:45:59 GMT"
+                    },
+                    "example": "Fri, 03 Jun 2022 07:45:59 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/success6"
+                  },
+                  "description": "",
+                  "example": [
+                    {
+                      "id": 2,
+                      "adminId": 18,
+                      "name": "Annapurna",
+                      "brandPic": "",
+                      "email": "annapurna@gmail.com",
+                      "createdAt": "2022-06-02T01:25:18.000Z",
+                      "updatedAt": "2022-06-02T01:25:18.000Z",
+                      "addrLine1": "Ha street",
+                      "addrLine2": "near gopal enclave",
+                      "lat": "60.008",
+                      "long": "-179.00",
+                      "cityId": 1,
+                      "stateId": 1,
+                      "zip_code": 600079,
+                      "isActive": true,
+                      "isApproved": true,
+                      "rooms": [
+                        {
+                          "room_type_id": 1,
+                          "totalRooms": 10,
+                          "availableRooms": 10
+                        },
+                        {
+                          "room_type_id": 2,
+                          "totalRooms": 16,
+                          "availableRooms": 12
+                        },
+                        {
+                          "room_type_id": 3,
+                          "totalRooms": 16,
+                          "availableRooms": 16
+                        }
+                      ],
+                      "assets": [
+                        {
+                          "id": 11,
+                          "uploadedBy": 18,
+                          "hotelId": 2,
+                          "url": "https://anna12e3.com/go43odho4te3l.jpg",
+                          "createdAt": "2022-06-02T05:56:46.000Z"
+                        },
+                        {
+                          "id": 12,
+                          "uploadedBy": 18,
+                          "hotelId": 2,
+                          "url": "https://anhbhbna12e3.com/go43odho4te3l.jpg",
+                          "createdAt": "2022-06-02T05:57:03.000Z"
+                        },
+                        {
+                          "id": 13,
+                          "uploadedBy": 18,
+                          "hotelId": 2,
+                          "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                          "createdAt": "2022-06-02T06:44:36.000Z"
+                        },
+                        {
+                          "id": 14,
+                          "uploadedBy": 18,
+                          "hotelId": 2,
+                          "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                          "createdAt": "2022-06-02T06:44:39.000Z"
+                        },
+                        {
+                          "id": 15,
+                          "uploadedBy": 18,
+                          "hotelId": 2,
+                          "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                          "createdAt": "2022-06-02T06:44:41.000Z"
+                        },
+                        {
+                          "id": 16,
+                          "uploadedBy": 18,
+                          "hotelId": 2,
+                          "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                          "createdAt": "2022-06-02T07:55:32.000Z"
+                        }
+                      ]
+                    },
+                    {
+                      "id": 7,
+                      "adminId": 18,
+                      "name": "Annapurna2 grand",
+                      "brandPic": "",
+                      "email": "annapurnagrand@gmail.com",
+                      "createdAt": "2022-06-02T01:29:17.000Z",
+                      "updatedAt": "2022-06-02T01:29:17.000Z",
+                      "addrLine1": "Ha street",
+                      "addrLine2": "near gopal enclave",
+                      "lat": "60.008",
+                      "long": "-179.00",
+                      "cityId": 1,
+                      "stateId": 1,
+                      "zip_code": 600079,
+                      "isActive": true,
+                      "isApproved": true,
+                      "rooms": [],
+                      "assets": []
+                    }
+                  ]
+                },
+                "example": [
+                  {
+                    "id": 2,
+                    "adminId": 18,
+                    "name": "Annapurna",
+                    "brandPic": "",
+                    "email": "annapurna@gmail.com",
+                    "createdAt": "2022-06-02T01:25:18.000Z",
+                    "updatedAt": "2022-06-02T01:25:18.000Z",
+                    "addrLine1": "Ha street",
+                    "addrLine2": "near gopal enclave",
+                    "lat": "60.008",
+                    "long": "-179.00",
+                    "cityId": 1,
+                    "stateId": 1,
+                    "zip_code": 600079,
+                    "isActive": true,
+                    "isApproved": true,
+                    "rooms": [
+                      {
+                        "room_type_id": 1,
+                        "totalRooms": 10,
+                        "availableRooms": 10
+                      },
+                      {
+                        "room_type_id": 2,
+                        "totalRooms": 16,
+                        "availableRooms": 12
+                      },
+                      {
+                        "room_type_id": 3,
+                        "totalRooms": 16,
+                        "availableRooms": 16
+                      }
+                    ],
+                    "assets": [
+                      {
+                        "id": 11,
+                        "uploadedBy": 18,
+                        "hotelId": 2,
+                        "url": "https://anna12e3.com/go43odho4te3l.jpg",
+                        "createdAt": "2022-06-02T05:56:46.000Z"
+                      },
+                      {
+                        "id": 12,
+                        "uploadedBy": 18,
+                        "hotelId": 2,
+                        "url": "https://anhbhbna12e3.com/go43odho4te3l.jpg",
+                        "createdAt": "2022-06-02T05:57:03.000Z"
+                      },
+                      {
+                        "id": 13,
+                        "uploadedBy": 18,
+                        "hotelId": 2,
+                        "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                        "createdAt": "2022-06-02T06:44:36.000Z"
+                      },
+                      {
+                        "id": 14,
+                        "uploadedBy": 18,
+                        "hotelId": 2,
+                        "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                        "createdAt": "2022-06-02T06:44:39.000Z"
+                      },
+                      {
+                        "id": 15,
+                        "uploadedBy": 18,
+                        "hotelId": 2,
+                        "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                        "createdAt": "2022-06-02T06:44:41.000Z"
+                      },
+                      {
+                        "id": 16,
+                        "uploadedBy": 18,
+                        "hotelId": 2,
+                        "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+                        "createdAt": "2022-06-02T07:55:32.000Z"
+                      }
+                    ]
+                  },
+                  {
+                    "id": 7,
+                    "adminId": 18,
+                    "name": "Annapurna2 grand",
+                    "brandPic": "",
+                    "email": "annapurnagrand@gmail.com",
+                    "createdAt": "2022-06-02T01:29:17.000Z",
+                    "updatedAt": "2022-06-02T01:29:17.000Z",
+                    "addrLine1": "Ha street",
+                    "addrLine2": "near gopal enclave",
+                    "lat": "60.008",
+                    "long": "-179.00",
+                    "cityId": 1,
+                    "stateId": 1,
+                    "zip_code": 600079,
+                    "isActive": true,
+                    "isApproved": true,
+                    "rooms": [],
+                    "assets": []
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "iftokennotpassedinheader1": {
+        "title": "iftokennotpassedinheader1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 400,
+          "message": "Please pass token ",
+          "error": "Bad Request"
+        }
+      },
+      "successreservedrooms": {
+        "title": "successreservedrooms",
+        "required": [
+          "check_in",
+          "check_out",
+          "no_of_guest",
+          "room_id",
+          "no_of_rooms",
+          "reserved_by",
+          "id",
+          "is_canceled",
+          "checkedin"
+        ],
+        "type": "object",
+        "properties": {
+          "check_in": {
+            "type": "string"
+          },
+          "check_out": {
+            "type": "string"
+          },
+          "no_of_guest": {
+            "type": "string"
+          },
+          "room_id": {
+            "type": "string"
+          },
+          "no_of_rooms": {
+            "type": "string"
+          },
+          "reserved_by": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_canceled": {
+            "type": "boolean"
+          },
+          "checkedin": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "check_in": "2022-06-03",
+          "check_out": "2022-06-06",
+          "no_of_guest": "2",
+          "room_id": "2",
+          "no_of_rooms": "4",
+          "reserved_by": 11,
+          "id": 1,
+          "is_canceled": false,
+          "checkedin": false
+        }
+      },
+      "max3paxperroom1": {
+        "title": "max3paxperroom1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 400,
+          "message": "Max 3 pax available per room !",
+          "error": "Bad Request"
+        }
+      },
+      "notenoughroomscheck1": {
+        "title": "notenoughroomscheck1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 400,
+          "message": "We are sorry , we dont have enough rooms now , please come back later !",
+          "error": "Bad Request"
+        }
+      },
+      "success": {
+        "title": "success",
+        "required": [
+          "id",
+          "check_in",
+          "check_out",
+          "no_of_guest",
+          "room_id",
+          "no_of_rooms",
+          "reserved_by",
+          "createdAt",
+          "updatedAt",
+          "is_canceled",
+          "checkedin"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "check_in": {
+            "type": "string"
+          },
+          "check_out": {
+            "type": "string"
+          },
+          "no_of_guest": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "room_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "no_of_rooms": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reserved_by": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "is_canceled": {
+            "type": "boolean"
+          },
+          "checkedin": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "id": 1,
+          "check_in": "2022-06-02T18:30:00.000Z",
+          "check_out": "2022-06-05T18:30:00.000Z",
+          "no_of_guest": 2,
+          "room_id": 2,
+          "no_of_rooms": 4,
+          "reserved_by": 11,
+          "createdAt": "2022-06-02T21:46:05.000Z",
+          "updatedAt": "2022-06-02T21:46:05.000Z",
+          "is_canceled": true,
+          "checkedin": false
+        }
+      },
+      "roomalreadycanceled1": {
+        "title": "roomalreadycanceled1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 400,
+          "message": "Room already canceled !",
+          "error": "Bad Request"
+        }
+      },
+      "RoomalreadycheckedInerror1": {
+        "title": "RoomalreadycheckedInerror1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 400,
+          "message": "Room already checkedIn !",
+          "error": "Bad Request"
+        }
+      },
+      "invalidtoken1": {
+        "title": "invalidtoken1",
+        "required": [
+          "statusCode",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      },
+      "validtoken": {
+        "title": "validtoken",
+        "required": [
+          "id",
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "email": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": 11,
+          "email": "n.majumder14@gmail.com"
+        }
+      },
+      "incorrectpassword1": {
+        "title": "incorrectpassword1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 403,
+          "message": "Incorrect email or password !",
+          "error": "Forbidden"
+        }
+      },
+      "correctlogin": {
+        "title": "correctlogin",
+        "required": [
+          "accessToken"
+        ],
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im4ubWFqdW1kZXIxNEBnbWFpbC5jb20iLCJzdWIiOjExLCJpYXQiOjE2NTM4NDEzNDIsImV4cCI6MTY1Mzg0MTQwMn0.WwH9SGEewrjGPB5t_boGV897tyqmibokWddAuvxktY4"
+        }
+      },
+      "errorhandlingdto1": {
+        "title": "errorhandlingdto1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": ""
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 400,
+          "message": [
+            "dob must be a Date instance",
+            "zip_code must be a number conforming to the specified constraints"
+          ],
+          "error": "Bad Request"
+        }
+      },
+      "successfulresponse": {
+        "title": "successfulresponse",
+        "required": [
+          "id",
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "email": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": 11,
+          "email": "n.majumder14@gmail.com"
+        }
+      },
+      "duplicateemail1": {
+        "title": "duplicateemail1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 400,
+          "message": "This email already in use !",
+          "error": "Bad Request"
+        }
+      },
+      "success3": {
+        "title": "success3",
+        "required": [
+          "id",
+          "adminId",
+          "name",
+          "brandPic",
+          "email",
+          "createdAt",
+          "updatedAt",
+          "addrLine1",
+          "addrLine2",
+          "lat",
+          "long",
+          "cityId",
+          "stateId",
+          "zip_code",
+          "isActive",
+          "isApproved",
+          "rooms",
+          "assets"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "adminId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "brandPic": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "addrLine1": {
+            "type": "string"
+          },
+          "addrLine2": {
+            "type": "string"
+          },
+          "lat": {
+            "type": "string"
+          },
+          "long": {
+            "type": "string"
+          },
+          "cityId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stateId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "zip_code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "isApproved": {
+            "type": "boolean"
+          },
+          "rooms": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Room"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "",
+            "example": [
+              {
+                "id": 1,
+                "hotel_id": 2,
+                "room_type_id": 1,
+                "rooms_available": 10,
+                "facilities": "ACKO",
+                "createdAt": "2022-06-02T02:48:54.000Z",
+                "updatedAt": "2022-06-02T02:48:54.000Z",
+                "price": "987"
+              }
+            ]
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Asset"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "",
+            "example": [
+              {
+                "id": 11,
+                "uploadedBy": 18,
+                "hotelId": 2,
+                "url": "https://anna12e3.com/go43odho4te3l.jpg",
+                "createdAt": "2022-06-02T05:56:46.000Z"
+              }
+            ]
+          }
+        },
+        "example": {
+          "id": 2,
+          "adminId": 18,
+          "name": "Annapurna",
+          "brandPic": "",
+          "email": "annapurna@gmail.com",
+          "createdAt": "2022-06-02T01:25:18.000Z",
+          "updatedAt": "2022-06-02T01:25:18.000Z",
+          "addrLine1": "Ha street",
+          "addrLine2": "near gopal enclave",
+          "lat": "60.008",
+          "long": "-179.00",
+          "cityId": 1,
+          "stateId": 1,
+          "zip_code": 600079,
+          "isActive": false,
+          "isApproved": false,
+          "rooms": [
+            {
+              "id": 1,
+              "hotel_id": 2,
+              "room_type_id": 1,
+              "rooms_available": 10,
+              "facilities": "ACKO",
+              "createdAt": "2022-06-02T02:48:54.000Z",
+              "updatedAt": "2022-06-02T02:48:54.000Z",
+              "price": "987"
+            }
+          ],
+          "assets": [
+            {
+              "id": 11,
+              "uploadedBy": 18,
+              "hotelId": 2,
+              "url": "https://anna12e3.com/go43odho4te3l.jpg",
+              "createdAt": "2022-06-02T05:56:46.000Z"
+            },
+            {
+              "id": 12,
+              "uploadedBy": 18,
+              "hotelId": 2,
+              "url": "https://anhbhbna12e3.com/go43odho4te3l.jpg",
+              "createdAt": "2022-06-02T05:57:03.000Z"
+            },
+            {
+              "id": 13,
+              "uploadedBy": 18,
+              "hotelId": 2,
+              "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+              "createdAt": "2022-06-02T06:44:36.000Z"
+            },
+            {
+              "id": 14,
+              "uploadedBy": 18,
+              "hotelId": 2,
+              "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+              "createdAt": "2022-06-02T06:44:39.000Z"
+            },
+            {
+              "id": 15,
+              "uploadedBy": 18,
+              "hotelId": 2,
+              "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+              "createdAt": "2022-06-02T06:44:41.000Z"
+            }
+          ]
+        }
+      },
+      "Room": {
+        "title": "Room",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hotel_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "room_type_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rooms_available": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "facilities": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": 1,
+          "hotel_id": 2,
+          "room_type_id": 1,
+          "rooms_available": 10,
+          "facilities": "ACKO",
+          "createdAt": "2022-06-02T02:48:54.000Z",
+          "updatedAt": "2022-06-02T02:48:54.000Z",
+          "price": "987"
+        }
+      },
+      "Asset": {
+        "title": "Asset",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "uploadedBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hotelId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "url": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": 11,
+          "uploadedBy": 18,
+          "hotelId": 2,
+          "url": "https://anna12e3.com/go43odho4te3l.jpg",
+          "createdAt": "2022-06-02T05:56:46.000Z"
+        }
+      },
+      "successresponse": {
+        "title": "successresponse",
+        "required": [
+          "name",
+          "email",
+          "cityId",
+          "stateId",
+          "addrLine1",
+          "addrLine2",
+          "zip_code",
+          "brandPic",
+          "lat",
+          "long"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "cityId": {
+            "type": "string"
+          },
+          "stateId": {
+            "type": "string"
+          },
+          "addrLine1": {
+            "type": "string"
+          },
+          "addrLine2": {
+            "type": "string"
+          },
+          "zip_code": {
+            "type": "string"
+          },
+          "brandPic": {
+            "type": "string"
+          },
+          "lat": {
+            "type": "string"
+          },
+          "long": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "name": "Annapurna",
+          "email": "annapurna@gmail.com",
+          "cityId": "1",
+          "stateId": "1",
+          "addrLine1": "Ha street",
+          "addrLine2": "near gopal enclave",
+          "zip_code": "600079",
+          "brandPic": "",
+          "lat": "60.008",
+          "long": "-179.00"
+        }
+      },
+      "samehotelemail1": {
+        "title": "samehotelemail1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 400,
+          "message": "Hotel listing with same email already exist !",
+          "error": "Bad Request"
+        }
+      },
+      "sucess": {
+        "title": "sucess",
+        "required": [
+          "hotel_id",
+          "room_type_id",
+          "rooms_available",
+          "facilities",
+          "price",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "hotel_id": {
+            "type": "string"
+          },
+          "room_type_id": {
+            "type": "string"
+          },
+          "rooms_available": {
+            "type": "string"
+          },
+          "facilities": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "hotel_id": "2",
+          "room_type_id": "1",
+          "rooms_available": "10",
+          "facilities": "ACKO",
+          "price": "987.12",
+          "id": 1
+        }
+      },
+      "similarroomchoicecannotbeaddedtwice1": {
+        "title": "similarroomchoicecannotbeaddedtwice1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 400,
+          "message": "Similar room choise cannot be added twice!",
+          "error": "Bad Request"
+        }
+      },
+      "typeerror1": {
+        "title": "typeerror1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": ""
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 400,
+          "message": [
+            "url must be an URL address"
+          ],
+          "error": "Bad Request"
+        }
+      },
+      "success4": {
+        "title": "success4",
+        "required": [
+          "uploadedBy",
+          "url",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "uploadedBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "url": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "uploadedBy": 18,
+          "url": "https://anna123.com/goodhotel.jpg",
+          "id": 1
+        }
+      },
+      "success6": {
+        "title": "success6",
+        "required": [
+          "id",
+          "adminId",
+          "name",
+          "brandPic",
+          "email",
+          "createdAt",
+          "updatedAt",
+          "addrLine1",
+          "addrLine2",
+          "lat",
+          "long",
+          "cityId",
+          "stateId",
+          "zip_code",
+          "isActive",
+          "isApproved",
+          "rooms",
+          "assets"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "adminId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "brandPic": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "addrLine1": {
+            "type": "string"
+          },
+          "addrLine2": {
+            "type": "string"
+          },
+          "lat": {
+            "type": "string"
+          },
+          "long": {
+            "type": "string"
+          },
+          "cityId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stateId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "zip_code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "isApproved": {
+            "type": "boolean"
+          },
+          "rooms": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Room2"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "",
+            "example": [
+              {
+                "room_type_id": 1,
+                "totalRooms": 10,
+                "availableRooms": 10
+              }
+            ]
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Asset"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "",
+            "example": [
+              {
+                "id": 11,
+                "uploadedBy": 18,
+                "hotelId": 2,
+                "url": "https://anna12e3.com/go43odho4te3l.jpg",
+                "createdAt": "2022-06-02T05:56:46.000Z"
+              }
+            ]
+          }
+        },
+        "example": {
+          "id": 2,
+          "adminId": 18,
+          "name": "Annapurna",
+          "brandPic": "",
+          "email": "annapurna@gmail.com",
+          "createdAt": "2022-06-02T01:25:18.000Z",
+          "updatedAt": "2022-06-02T01:25:18.000Z",
+          "addrLine1": "Ha street",
+          "addrLine2": "near gopal enclave",
+          "lat": "60.008",
+          "long": "-179.00",
+          "cityId": 1,
+          "stateId": 1,
+          "zip_code": 600079,
+          "isActive": true,
+          "isApproved": true,
+          "rooms": [
+            {
+              "room_type_id": 1,
+              "totalRooms": 10,
+              "availableRooms": 10
+            },
+            {
+              "room_type_id": 2,
+              "totalRooms": 16,
+              "availableRooms": 12
+            },
+            {
+              "room_type_id": 3,
+              "totalRooms": 16,
+              "availableRooms": 16
+            }
+          ],
+          "assets": [
+            {
+              "id": 11,
+              "uploadedBy": 18,
+              "hotelId": 2,
+              "url": "https://anna12e3.com/go43odho4te3l.jpg",
+              "createdAt": "2022-06-02T05:56:46.000Z"
+            },
+            {
+              "id": 12,
+              "uploadedBy": 18,
+              "hotelId": 2,
+              "url": "https://anhbhbna12e3.com/go43odho4te3l.jpg",
+              "createdAt": "2022-06-02T05:57:03.000Z"
+            },
+            {
+              "id": 13,
+              "uploadedBy": 18,
+              "hotelId": 2,
+              "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+              "createdAt": "2022-06-02T06:44:36.000Z"
+            },
+            {
+              "id": 14,
+              "uploadedBy": 18,
+              "hotelId": 2,
+              "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+              "createdAt": "2022-06-02T06:44:39.000Z"
+            },
+            {
+              "id": 15,
+              "uploadedBy": 18,
+              "hotelId": 2,
+              "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+              "createdAt": "2022-06-02T06:44:41.000Z"
+            },
+            {
+              "id": 16,
+              "uploadedBy": 18,
+              "hotelId": 2,
+              "url": "https://anhbuhbna12e3.com/go43odho4te3l.jpg",
+              "createdAt": "2022-06-02T07:55:32.000Z"
+            }
+          ]
+        }
+      },
+      "Room2": {
+        "title": "Room2",
+        "type": "object",
+        "properties": {
+          "room_type_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalRooms": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "availableRooms": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "room_type_id": 1,
+          "totalRooms": 10,
+          "availableRooms": 10
+        }
+      }
+    },
+    "securitySchemes": {
+      "httpBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "httpBearer": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "reservations"
+    },
+    {
+      "name": "user protected"
+    },
+    {
+      "name": "User"
+    },
+    {
+      "name": "HA protected"
+    },
+    {
+      "name": "Hotel Admin"
+    },
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}
