@@ -46,6 +46,16 @@ export class HotelsReservationsController {
     private readonly jwtService:JwtService
     ) {}
 
+    @Get()
+    @UseGuards(JwtAuthGuard)
+    @UseGuards(RoleGuard(Role.User))
+    async getAllReservations(@Headers() headers){
+      const token = headers.authorization.slice(7);
+      const reserved_by = this.jwtService.decode(token).sub;
+
+      return this.haService.getAllReservations(reserved_by);
+    }
+
     @Post('book')
     @UseGuards(JwtAuthGuard)
     @UseGuards(RoleGuard(Role.User))

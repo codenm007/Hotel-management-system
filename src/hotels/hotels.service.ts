@@ -95,6 +95,13 @@ export class HAService {
 
   }
 
+  async getAllReservations(reserved_by: number) {
+    //checking if rooms are available for that date range 
+    return await this.hotelReservations.find({ 
+      where: {reserved_by}
+    })
+  }
+
   async addHotelRooms(adminId: number, hotel_id: number, room_type_id: number, rooms_available: number, facilities: FacilitiesPrefixType, price: number) {
     //checking if correct hotel id admin id is passed 
     const hotel = await this.findHotelById(hotel_id);
