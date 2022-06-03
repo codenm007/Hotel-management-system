@@ -1,23 +1,31 @@
-import {IsString,IsNumber} from 'class-validator';
+import {IsDate,IsNumber} from 'class-validator';
 import { Type } from 'class-transformer';
 
 
 
-export class addRoomsDto  {
+export class reserveRoom  {
 
     @IsNumber()
     @Type(() => Number)
-    hotel_id:number;
+    room_id:number;
+
+    @IsDate()
+    @Type(() => Date)
+    check_in:Date;
+
+    @IsDate()
+    @Type(() => Date)
+    check_out:Date;
 
     @IsNumber()
     @Type(() => Number)
-    room_type_id:number;
+    no_of_guest:number;
 
     @IsNumber()
     @Type(() => Number)
-    rooms_available:number;
+    no_of_rooms:number;
 
     @IsNumber()
     @Type(() => Number)
-    price:number;
+    reserved_by:number;
 }
