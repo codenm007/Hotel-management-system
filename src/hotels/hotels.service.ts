@@ -69,6 +69,32 @@ export class HAService {
 
   }
 
+  async cancelUserRoom(id: number,reserved_by: number) {
+    //checking if rooms are available for that date range 
+    const getReservation = await this.hotelReservations.findOne({ 
+      where: {reserved_by,id,is_canceled:false,checkedin:false}
+    })
+    if(!getReservation){
+      throw new BadRequestException('Room already canceled !'); 
+    }
+    getReservation.is_canceled = true;
+    return this.hotelReservations.save(getReservation);
+
+  }
+
+  async checkInUserRoom(id: number,reserved_by: number) {
+    //checking if rooms are available for that date range 
+    const getReservation = await this.hotelReservations.findOne({ 
+      where: {reserved_by,id,is_canceled:false,checkedin:false}
+    })
+    if(!getReservation){
+      throw new BadRequestException('Room already checkedIn !'); 
+    }
+    getReservation.checkedin = true;
+    return this.hotelReservations.save(getReservation);
+
+  }
+
   async addHotelRooms(adminId: number, hotel_id: number, room_type_id: number, rooms_available: number, facilities: FacilitiesPrefixType, price: number) {
     //checking if correct hotel id admin id is passed 
     const hotel = await this.findHotelById(hotel_id);
