@@ -8,6 +8,7 @@
 
 [Nm's Hotel Management System](https://github.com/codenm007/Hotel-management-system) .
 [Postman Documentation of Apis](https://documenter.getpostman.com/view/12866660/Uz5GnFqd#88533111-42c5-42fc-b89e-927c71dffc7c)
+[Swagger Api Documentation](https://codenm007.github.io/Hotel-management-system/)
 
 
 This is a hotel Management System made out with the following technologies:
