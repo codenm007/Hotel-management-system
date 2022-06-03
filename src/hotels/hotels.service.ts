@@ -49,6 +49,23 @@ export class HAService {
 
   }
 
+  async cancelRoomReservationByAdmin(booking_id: number,admin_id: number) {
+    //checking if rooms are available for that date range 
+    const getReservation = await this.hotelReservations.findOne({ 
+      where: {id: booking_id,is_canceled:false,checkedin:false}
+    })
+    //check if admin is the owner of that room 
+    const roomId = getReservation.room_id;
+    const getHotelId = await (await this.hotelRoomRepository.findOne({where:{id:roomId},select:["hotel_id"]})).hotel_id;
+    const getHotelAdminId = await (await this.hotelRepository.findOne({where:{id:getHotelId}})).adminId
+    if(admin_id !== getHotelAdminId){
+      throw new BadRequestException('You dont have the required access !'); 
+    }
+    getReservation.is_canceled = true;
+    return this.hotelReservations.save(getReservation);
+
+  }
+
   async reserveMyRoom(room_id: number, check_in: Date, check_out: Date, no_of_guest: number, no_of_rooms: number, reserved_by: number) {
     //checking if rooms are available for that date range 
     const freeRooms = await this.getEmptyRooms(room_id, check_in, check_out);
