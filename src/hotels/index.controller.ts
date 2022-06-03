@@ -21,6 +21,7 @@ import {addAsetsDto} from './dtos/addAsset.dto';
 import {RoleGuard} from '../guards/role.guard';
 import {scrhotelbycity} from './dtos/searchHotelByCity.dto';
 import {reserveRoom} from './dtos/reserveRoom.dto';
+import {reservations} from './dtos/hotelReservations.dto';
 
 @Controller('hotels')
 export class HotelsController {
@@ -54,6 +55,16 @@ export class HotelsReservationsController {
       const {room_id,check_in,check_out,no_of_guest,no_of_rooms} = body;
        
       return this.haService.reserveMyRoom(room_id,check_in,check_out,no_of_guest,no_of_rooms,reserved_by);
+    }
+
+    @Post('cancel')
+    @UseGuards(JwtAuthGuard)
+    @UseGuards(RoleGuard(Role.User))
+    async cancelHotelBooking(@Headers() headers,@Body() body:reservations){
+      const token = headers.authorization.slice(7);
+      const reserved_by = this.jwtService.decode(token).sub;
+       const {id} = body;
+      return this.haService.cancelUserRoom(id,reserved_by);
     }
 }
 
