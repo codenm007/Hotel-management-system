@@ -63,7 +63,7 @@
           },
           "required": false
         },
-        "Examples": {
+        "responses": {
           "400": {
             "description": "Bad Request",
             "headers": {
@@ -248,7 +248,7 @@
         "summary": "get all reservations",
         "operationId": "getallreservations",
         "parameters": [],
-        "Examples": {
+        "responses": {
           "200": {
             "description": "OK",
             "headers": {
@@ -420,7 +420,7 @@
           },
           "required": false
         },
-        "Examples": {
+        "responses": {
           "201": {
             "description": "Created",
             "headers": {
@@ -628,7 +628,7 @@
           },
           "required": false
         },
-        "Examples": {
+        "responses": {
           "400": {
             "description": "Bad Request",
             "headers": {
@@ -815,7 +815,7 @@
         "summary": "get user profile info",
         "operationId": "getuserprofileinfo",
         "parameters": [],
-        "Examples": {
+        "responses": {
           "401": {
             "description": "Unauthorized",
             "headers": {
@@ -1017,7 +1017,7 @@
           },
           "required": false
         },
-        "Examples": {
+        "responses": {
           "403": {
             "description": "Forbidden",
             "headers": {
@@ -1262,7 +1262,7 @@
           },
           "required": false
         },
-        "Examples": {
+        "responses": {
           "400": {
             "description": "Bad Request",
             "headers": {
@@ -1443,7 +1443,7 @@
         "summary": "get user profile info",
         "operationId": "Getgetuserprofileinfo",
         "parameters": [],
-        "Examples": {
+        "responses": {
           "401": {
             "description": "Unauthorized",
             "headers": {
@@ -1620,7 +1620,7 @@
         "summary": "get all hotel listings",
         "operationId": "getallhotellistings",
         "parameters": [],
-        "Examples": {
+        "responses": {
           "200": {
             "description": "OK",
             "headers": {
@@ -1962,7 +1962,7 @@
           },
           "required": false
         },
-        "Examples": {
+        "responses": {
           "201": {
             "description": "Created",
             "headers": {
@@ -2192,7 +2192,7 @@
           },
           "required": false
         },
-        "Examples": {
+        "responses": {
           "201": {
             "description": "Created",
             "headers": {
@@ -2374,7 +2374,7 @@
         "summary": "get room reservations",
         "operationId": "getroomreservations",
         "parameters": [],
-        "Examples": {
+        "responses": {
           "default": {
             "description": "",
             "headers": {},
@@ -2418,7 +2418,7 @@
           },
           "required": false
         },
-        "Examples": {
+        "responses": {
           "400": {
             "description": "Bad Request",
             "headers": {
@@ -2624,7 +2624,7 @@
           },
           "required": false
         },
-        "Examples": {
+        "responses": {
           "403": {
             "description": "Forbidden",
             "headers": {
@@ -2869,7 +2869,7 @@
           },
           "required": false
         },
-        "Examples": {
+        "responses": {
           "400": {
             "description": "Bad Request",
             "headers": {
@@ -3050,7 +3050,7 @@
         "summary": "ping",
         "operationId": "ping",
         "parameters": [],
-        "Examples": {
+        "responses": {
           "200": {
             "description": "OK",
             "headers": {
@@ -3143,7 +3143,7 @@
         "summary": "get hotels based on city",
         "operationId": "gethotelsbasedoncity",
         "parameters": [],
-        "Examples": {
+        "responses": {
           "200": {
             "description": "OK",
             "headers": {
