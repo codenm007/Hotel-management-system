@@ -66,6 +66,16 @@ export class HotelsReservationsController {
        const {id} = body;
       return this.haService.cancelUserRoom(id,reserved_by);
     }
+
+    @Post('checkIn')
+    @UseGuards(JwtAuthGuard)
+    @UseGuards(RoleGuard(Role.User))
+    async checkInToHotel(@Headers() headers,@Body() body:reservations){
+      const token = headers.authorization.slice(7);
+      const reserved_by = this.jwtService.decode(token).sub;
+       const {id} = body;
+      return this.haService.checkInUserRoom(id,reserved_by);
+    }
 }
 
 
