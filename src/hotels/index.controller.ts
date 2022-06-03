@@ -169,6 +169,13 @@ export class HotelRoomsController{
   
     }
 
+    @Get('reservations/:hotelId')
+    @UseGuards(JwtAuthGuard)
+    @UseGuards(RoleGuard(Role.hotelManager))
+    async getHotelReservations(@Param('hotelId') hotelId){
+      return this.haService.getReservationsByHotelId(hotelId);
+    }
+
     @Post('reservations/cancel')
     @UseGuards(JwtAuthGuard)
     @UseGuards(RoleGuard(Role.hotelManager))

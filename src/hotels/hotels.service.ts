@@ -70,6 +70,20 @@ export class HAService {
 
   }
 
+  async getReservationsByHotelId(hotel_id: number) {
+    //checking if rooms are available for that date range 
+    const hotelRooms = await this.hotelRoomRepository.find({where:{hotel_id},select:["id"]});
+    const HotelRoomReservation = [];
+    if(hotelRooms.length){
+    for(const room of hotelRooms) {
+      const reservations = await this.hotelReservations.find({where:{room_id:room.id}});
+      HotelRoomReservation.push(reservations);
+    }
+  }
+    return HotelRoomReservation;
+
+  }
+
   async reserveMyRoom(room_id: number, check_in: Date, check_out: Date, no_of_guest: number, no_of_rooms: number, reserved_by: number) {
     //checking if rooms are available for that date range 
     const freeRooms = await this.getEmptyRooms(room_id, check_in, check_out);
