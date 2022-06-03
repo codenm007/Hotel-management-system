@@ -54,6 +54,10 @@ export class HAService {
     const getReservation = await this.hotelReservations.findOne({ 
       where: {id: booking_id,is_canceled:false,checkedin:false}
     })
+    if(!getReservation){
+      throw new BadRequestException('Room already canceled !'); 
+    }
+
     //check if admin is the owner of that room 
     const roomId = getReservation.room_id;
     const getHotelId = await (await this.hotelRoomRepository.findOne({where:{id:roomId},select:["hotel_id"]})).hotel_id;

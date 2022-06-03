@@ -168,6 +168,16 @@ export class HotelRoomsController{
        return this.haService.addHotelRooms(adminId,hotel_id,room_type_id,rooms_available,facilities,price);
   
     }
+
+    @Post('reservations/cancel')
+    @UseGuards(JwtAuthGuard)
+    @UseGuards(RoleGuard(Role.hotelManager))
+    async cancelHotelBooking(@Headers() headers,@Body() body:reservations){
+      const token = headers.authorization.slice(7);
+      const adminId = this.jwtService.decode(token).sub;
+       const {id} = body;
+      return this.haService.cancelRoomReservationByAdmin(id,adminId);
+    }
 }
 
 @Controller('hotel/admin/hotelAssets')
