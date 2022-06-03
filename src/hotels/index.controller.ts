@@ -35,9 +35,17 @@ export class HotelsController {
       const {cityId,check_in,check_out } = body;
   
       return this.haService.getHotelsByCity(cityId,check_in,check_out);
-    }
+    }  
+}
 
-    @Post('makeReservation')
+@Controller('hotels/reservations')
+export class HotelsReservationsController {
+  constructor(
+    private readonly haService: HAService,
+    private readonly jwtService:JwtService
+    ) {}
+
+    @Post('book')
     @UseGuards(JwtAuthGuard)
     @UseGuards(RoleGuard(Role.User))
     async bookHotelRoom(@Headers() headers,@Body() body:reserveRoom){
@@ -47,7 +55,6 @@ export class HotelsController {
        
       return this.haService.reserveMyRoom(room_id,check_in,check_out,no_of_guest,no_of_rooms,reserved_by);
     }
-  
 }
 
 
