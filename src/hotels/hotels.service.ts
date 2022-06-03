@@ -7,7 +7,7 @@ import {HotelRooms,FacilitiesPrefixType} from './hotelRooms.entity';
 import { Role } from "../users/dtos/User.dto";
 import {HotelAssets} from './hotelAssets.entity';
 import {Hotelreservations} from './reservations.entity';
-import { Between } from "typeorm";
+import { LessThan,MoreThan } from "typeorm";
 
 @Injectable()
 export class HAService {
@@ -52,7 +52,7 @@ export class HAService {
   async reserveMyRoom(room_id:number,check_in:Date,check_out:Date,no_of_guest:number,no_of_rooms:number,reserved_by:number) {
     //checking if rooms are available for that date range 
     const freeRooms = await this.getEmptyRooms(room_id,check_in,check_out);
-
+    console.log(freeRooms);
     //if hotel is out of rooms then throwing error
     if(freeRooms < no_of_rooms){
       throw new BadRequestException('We are sorry , we dont have enough rooms now , please come back later !')
@@ -135,14 +135,12 @@ export class HAService {
       where : { 
         room_id,
         is_canceled:false,
-        createdAt: Between(
-          new Date(check_in), 
-          new Date(check_out)
-      ),
+        check_out:MoreThan(new Date(check_in)),
+        check_in:LessThan(new Date(check_out))
       },
       select:["no_of_rooms","checkedin"] 
     })
-
+    console.log(bookedRooms,"bookedRooms")
     if(bookedRooms.length){
       for(const room of bookedRooms){
         totalBookedRooms += room.no_of_rooms;
