@@ -1,6 +1,6 @@
 
    
-import { Body, Controller, Delete, Get, Param, Post ,Headers, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post ,Headers, UseGuards,Query } from '@nestjs/common';
 
 //importing services
 import { HAService } from './hotels.service';
@@ -32,8 +32,8 @@ export class HotelsController {
     ) {}
   
     @Get()
-    async getHotelsBasedOnCity(@Body() body:scrhotelbycity ) {
-      const {cityId,check_in,check_out } = body;
+    async getHotelsBasedOnCity(@Query() query:scrhotelbycity ) {
+      const {cityId,check_in,check_out } = query;
   
       return this.haService.getHotelsByCity(cityId,check_in,check_out);
     }  
