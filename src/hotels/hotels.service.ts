@@ -227,7 +227,15 @@ export class HAService {
   }
 
   async getHotelsByCity(cityId: number, check_in: Date, check_out: Date) {
-    //checking if correct hotel id admin id is passed
+    //not allowing history data , restricting checkin date to be more than today
+
+    if(new Date(check_in) <= new Date()){
+      throw new BadRequestException('CheckIn cannot be in a past date !');
+    }
+
+    if(new Date(check_in) > new Date(check_out)){
+      throw new BadRequestException('You cannot check out before you checked in !');
+    }
 
     const hotels = await this.findAllHotelsByCityId(cityId);
 
