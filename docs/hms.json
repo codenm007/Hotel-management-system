@@ -263,6 +263,17 @@
                   }
                 }
               },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "*"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
               "Content-Length": {
                 "content": {
                   "text/plain": {
@@ -290,9 +301,9 @@
                   "text/plain": {
                     "schema": {
                       "type": "string",
-                      "example": "Fri, 03 Jun 2022 07:01:57 GMT"
+                      "example": "Sat, 04 Jun 2022 09:19:41 GMT"
                     },
-                    "example": "Fri, 03 Jun 2022 07:01:57 GMT"
+                    "example": "Sat, 04 Jun 2022 09:19:41 GMT"
                   }
                 }
               },
@@ -3142,7 +3153,45 @@
         ],
         "summary": "get hotels based on city",
         "operationId": "gethotelsbasedoncity",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "cityId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "check_in",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "2022-06-06"
+            }
+          },
+          {
+            "name": "check_out",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "2022-06-07"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -3155,6 +3204,17 @@
                       "example": "Express"
                     },
                     "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "*"
+                    },
+                    "example": "*"
                   }
                 }
               },
@@ -3185,9 +3245,9 @@
                   "text/plain": {
                     "schema": {
                       "type": "string",
-                      "example": "Fri, 03 Jun 2022 07:45:59 GMT"
+                      "example": "Sat, 04 Jun 2022 09:17:51 GMT"
                     },
-                    "example": "Fri, 03 Jun 2022 07:45:59 GMT"
+                    "example": "Sat, 04 Jun 2022 09:17:51 GMT"
                   }
                 }
               },
@@ -3425,6 +3485,100 @@
                     "assets": []
                   }
                 ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Express"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "*"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "87"
+                    },
+                    "example": "87"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "W/\"57-X2Id73rKj83sPZMBWsML5Q0XajQ\""
+                    },
+                    "example": "W/\"57-X2Id73rKj83sPZMBWsML5Q0XajQ\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Sat, 04 Jun 2022 09:25:59 GMT"
+                    },
+                    "example": "Sat, 04 Jun 2022 09:25:59 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "keep-alive"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "timeout=5"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckIncannotbeinapastdate1"
+                },
+                "example": {
+                  "statusCode": 400,
+                  "message": "CheckIn cannot be in a past date !",
+                  "error": "Bad Request"
+                }
               }
             }
           }
@@ -4560,6 +4714,58 @@
           "room_type_id": 1,
           "totalRooms": 10,
           "availableRooms": 10
+        }
+      },
+      "CheckIncannotbeinapastdate1": {
+        "title": "CheckIncannotbeinapastdate1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 400,
+          "message": "CheckIn cannot be in a past date !",
+          "error": "Bad Request"
+        }
+      },
+      "Youcannotcheckoutbeforeyoucheckedin1": {
+        "title": "Youcannotcheckoutbeforeyoucheckedin1",
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "statusCode": 400,
+          "message": "You cannot check out before you checked in !",
+          "error": "Bad Request"
         }
       }
     },
